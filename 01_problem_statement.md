@@ -15,7 +15,7 @@
 | Share "how do I…", already in the docs | 55 % | measured | P1 proposal — ticket tags |
 | Cost of one ticket handled by a human | €10 all-in | analogy | 60 × €45k ÷ 480k tickets = €5.6 of agent time + team leads, QA and tooling (class guide) |
 | Support time spent on "how do I…" | 55 % × 480k × €10 ≈ €2.6M / yr | derived | from the rows above |
-| Target deflection on the automatable share | ≥ 45 % | guess → S4 test | flip point of `02_sizing.xlsx` (≈ 43 %); measured on 200 real tickets with the S4 prototype |
+| Target deflection on the automatable share | ≥ 45 % | guess → S4 test | flip point of `02_sizing.xlsx` (≈ 43 %); first reading on 50 eval cases (Assignment 4), then a 200-case eval-set, synthetic or anonymised, by 22 Nov; the 7-day reopen rate is read in the pilot |
 
 ## 2. Problem tree — from symptom to cause
 - **Symptom** (what people complain about): "Support takes two days to answer at month end"; agents say they burn out at payroll close.
@@ -52,7 +52,7 @@
 ## 6. What would have to be true?
 | # | Hypothesis | Measured / analogy / guess | How we will test it | Session |
 |---|---|---|---|---|
-| 1 | ≥ 45 % of automatable "how do I…" tickets are resolved without a human and not reopened within 7 days | guess | Replay 200 real tickets through the S4 prototype; graders check resolution + citation | S4 prototype |
+| 1 | ≥ 45 % of automatable "how do I…" tickets are resolved without a human and not reopened within 7 days | guess | Run a 200-case eval-set (synthetic or anonymised, labelled before the run) through the prototype; two graders check the answer could be sent without editing, with its citation. The 7-day reopen rate can only be read on live traffic (pilot, then A/B) | S4–S5 prototype, S6 A/B |
 | 2 | 68 % of "how do I…" tickets are answerable from the current help center | analogy (class worked example) | Manual audit of 200 tagged tickets against the help center | S3 / S4 |
 | 3 | The router sends 100 % of pay-figure questions to a human (no L1 leakage) | guess | Eval-set with an oversampled slice of money questions; target 0 leaks | S5 metrics |
 | 4 | Deflection does not drop during month-end / year-end (seasonal drift) | guess | Segment the A/B results by period (month-end vs mid-month) | S6 A/B |
@@ -60,3 +60,52 @@
 
 ## 7. Do-nothing baseline
 In 12 months without the agent, the problem does not stay still: volume grows with the customer base (+10 %/year guess), the content team keeps improving articles and agents get faster with macros — we price this at **≈ 3 % efficiency gain a year (≈ €144k)**, not zero. The month-end peak and agent burnout remain, and the next-best use of the same team would be a **help-center search revamp + in-app month-end checklists** (no GenAI), worth ≈ €150k a year: that is the hurdle our agent has to beat in `02_sizing.xlsx`.
+
+## 8. Personas and journey maps
+> **Status: provisional.** These personas come from the P1 proposal and the Session 1 method, not from interviews. Minutes are the guesses of `03_product_brief.md` §2. The conversations in `03_user_research.md` must confirm or change them.
+
+### The customer — Camille, HR manager
+- **Who:** HR manager at a 200-employee customer company; closes payroll on the last two days of the month [guess].
+- **Goal:** close payroll on time, without a mistake on anyone's pay.
+- **Pain:** she needs an answer in the middle of the payroll run, and the help center speaks product vocabulary ("variable element") while she thinks in payroll vocabulary ("bonus for March").
+- **Fear:** a late filing, or a wrong payslip she has to explain to an employee.
+- **Job to be done:** when I am blocked during payroll close, I want the exact steps at once, so that I can finish the run on time — without opening a ticket and waiting.
+
+| Step | What she does | How it feels | Where it hurts | What the agent changes |
+|---|---|---|---|---|
+| 1. Blocked | Hits a "how do I…" question during the run | Pressure | Payroll close has a hard deadline | Nothing yet |
+| 2. Searches | Tries the help center with her own words | Irritation | Keyword search misses her vocabulary | Understands the question in natural language |
+| 3. Opens a ticket | Writes to support | Resignation | She leaves the payroll screen | Answers in the widget, with a cited article |
+| 4. Waits | Moves on, comes back later | Anxiety | Longest wait at month end | **Pain point:** the answer comes at once |
+| 5. Gets the answer | Often a link to an article she did not find | Relief, some annoyance | The answer already existed | Same content, at the moment of need |
+| 6. Pay or legal question | Needs a person | Needs certainty | Must not be answered by a machine | Direct hand-off to a payroll specialist, conversation attached |
+
+### The support agent — Inès, tier-1 agent
+- **Who:** tier-1 agent on a 60-person team, working mostly in the ticketing tool and the help center [guess].
+- **Goal:** clear her queue at month end while keeping her quality score.
+- **Pain:** re-sending articles that already exist; about 7 of the 11 minutes on a "how do I…" ticket go on search and drafting [guess].
+- **Fear:** being replaced by the bot, or blamed for what it says.
+- **Job to be done:** when a month-end queue builds up, I want the repeat questions handled, so that I can spend my time on the cases that need me — without answering for a machine I cannot check.
+
+| Step | Minutes today [guess] | How it feels | What the agent changes |
+|---|---|---|---|
+| 1. Read the ticket | 1.0 | Neutral | Read and classified automatically |
+| 2. Decide if it may be answered | 0.5 | Careful: pay and legal topics are risky | Router and rules; human-only topics always come to her |
+| 3. Search the help center | 4.0 | **Pain point:** repetitive | Retrieval of the right passages |
+| 4. Draft the reply | 3.0 | **Pain point:** copy-paste and rewriting | Cited draft |
+| 5. Check the reply | 1.0 | Careful | A rule blocks any amount, deadline or refund |
+| 6. Send and log | 1.5 | Routine | Her work moves to sampling about 5 % of answers and handling escalations with context |
+
+## 9. Stakeholder map
+> **Status: provisional — judgement,** using the Session 1 power / interest grid. Owners match `governance.md`.
+
+| Stakeholder | Power | Interest | Approach | What they need from us |
+|---|---|---|---|---|
+| Head of Support | high | high | Manage closely | Owns the agent, the escalation rule and the off switch |
+| CFO | high | high | Manage closely | The business case against the €150k hurdle |
+| Head of Legal & Compliance | high | low until the first incident | Keep satisfied | Validation of legal-deadline content; pay and legal topics stay out of scope |
+| DPO | high | low until the first incident | Keep satisfied | DPA coverage, LLM sub-processor, no employee payroll data sent to the model |
+| Tier-1 agents | low | high | Keep informed | They carry adoption: sampling, escalations and the fear of replacement |
+| Payroll specialists | low | high | Keep informed | Escalations that arrive with context |
+| Content team | low | medium | Keep informed | Documentation-gap tickets and an owner for the help center |
+| HR managers (most customers) | low | medium | Monitor | Instant answers and a person one click away; one bad screenshot changes this quadrant |
