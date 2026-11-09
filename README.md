@@ -9,7 +9,7 @@
 | Alexis Maeder | | yes |
 | Colin Pietri | | yes |
 | Mathis Meimoun | Mathmnms | yes |
-| Cristian Larrain | | yes |
+| Cristian Larrain | cristianlrn | yes |
 | Lou Brunet | loubrnt | yes |
 
 ## Our agent
@@ -23,14 +23,18 @@
 | File | Session | Status |
 |---|---|---|
 | `01_problem_statement.md` | S1–S2 — Assignment 1 | done |
-| `governance.md` | created for Assignment 1, one line added every session | S1 + S2 done |
+| `governance.md` | created for Assignment 1, one line added every session | S1 + S2 + S3 done |
 | `02_sizing.xlsx` | S2 — Assignment 2 | done |
 | `02_investment_memo.md` | S2 — Assignment 2 | done — CONDITIONAL GO |
-| `03_product_brief.md` | S3 | |
+| `03_product_brief.md` | S3 — Assignment 3 | v1 done, v2 waits for the user conversations |
+| `03_ai_lean_canvas.md` | S3 — Assignment 3 | done |
+| `03_user_research.md` | S3 — Assignment 3 | guide ready, **conversations to hold** |
+| `03_prototype_link.md` | S3 — Assignment 3 | prompt and link, to share before the user tests |
 | `04_architecture.md` | S4 | |
 | `05_metrics.md` | S5 | |
 | `06_ab_protocol.md` | S6 | |
 | `07_operations.md` | S7 | |
 | `08_launch_memo.md` | S8 | |
-| `spec.md`, `product_brief.md` | final | |
-| `/prototype`, `/evals` | from S4 | |
+| `spec.md` | S3 skeleton → S4 v2 | skeleton done |
+| `/evals`, `/kb` | from S3 | 20 cases, labels to be reviewed by the team; 12 synthetic help-center articles |
+| `/prototype` | from S4 | |
