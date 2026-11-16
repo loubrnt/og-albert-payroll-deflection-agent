@@ -1,0 +1,4 @@
+{"at": "2026-11-16T09:27:51+00:00", "state": "off", "who": "cristianlrn (laptop)", "why": "rollback test: switch off"}
+{"at": "2026-11-16T09:27:51+00:00", "state": "suggest_only", "who": "cristianlrn (laptop)", "why": "rollback test: suggest-only position"}
+{"at": "2026-11-16T09:27:52+00:00", "state": "on", "who": "cristianlrn (laptop)", "why": "rollback test: back on"}
+{"at": "2026-11-16T09:27:52+00:00", "state": "on", "who": "cristianlrn (laptop)", "why": "rollback test: state restored"}
