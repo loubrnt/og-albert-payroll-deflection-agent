@@ -23,7 +23,7 @@
 | File | Session | Status |
 |---|---|---|
 | `01_problem_statement.md` | S1–S2 — Assignment 1 | done |
-| `governance.md` | created for Assignment 1, one line added every session | S1 + S2 + S3 done |
+| `governance.md` | created for Assignment 1, one line added every session | S1 + S2 + S3 + S4 done |
 | `02_sizing.xlsx` | S2 — Assignment 2 | done |
 | `02_investment_memo.md` | S2 — Assignment 2 | done — CONDITIONAL GO |
 | `03_product_brief.md` | S3 — Assignment 3 | v1 done, v2 waits for the user conversations |
@@ -35,6 +35,6 @@
 | `06_ab_protocol.md` | S6 | |
 | `07_operations.md` | S7 | |
 | `08_launch_memo.md` | S8 | |
-| `spec.md` | S3 skeleton → S4 v2 | skeleton done |
+| `spec.md` | S3 skeleton → S4 v2 | v2 done, after the first eval run |
 | `/evals`, `/kb` | from S3, S4 | 50 cases (labels frozen before the run, to be reviewed by the team), the run output and `report_v0.md`: 27 % proxy against the 45 % criterion, two graders still to grade; 12 synthetic help-center articles |
 | `/prototype` | from S4 | four steps (router, guard + policy check, retrieve + draft, evals + surface); run once, template drafter |
