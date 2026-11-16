@@ -1,0 +1,12 @@
+eval_set_v0.csv frozen BEFORE any prototype run
+2026-11-09T13:33:37Z
+16ded8fd670261b3dc8090c40d499bdfd69c5adc63a53c27ebc37d1546b47ecd  evals/eval_set_v0.csv  (file as frozen on 9 November)
+
+Change on 15 November 2026, when the file was moved into this repository, with no label touched:
+- column `project` renamed (the invented company name was replaced by the agent name);
+- the word "Soldia" inside three ticket inputs (E15, E27, E48) replaced by "the company".
+All expected_* columns, the evidence, the hand-over flags and the segments are unchanged.
+The run was repeated on the changed file: every decision, draft and cited article is identical;
+only the router confidence moved, on those three tickets.
+Current file:
+e3a2ddc5725cb11046e2a0d3df372841108c484b8037d92d15d8a62add4395a2  evals/eval_set_v0.csv

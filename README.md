@@ -23,18 +23,18 @@
 | File | Session | Status |
 |---|---|---|
 | `01_problem_statement.md` | S1–S2 — Assignment 1 | done |
-| `governance.md` | created for Assignment 1, one line added every session | S1 + S2 + S3 done |
+| `governance.md` | created for Assignment 1, one line added every session | S1 + S2 + S3 + S4 done |
 | `02_sizing.xlsx` | S2 — Assignment 2 | done |
 | `02_investment_memo.md` | S2 — Assignment 2 | done — CONDITIONAL GO |
 | `03_product_brief.md` | S3 — Assignment 3 | v1 done, v2 waits for the user conversations |
 | `03_ai_lean_canvas.md` | S3 — Assignment 3 | done |
 | `03_user_research.md` | S3 — Assignment 3 | guide ready, **conversations to hold** |
 | `03_prototype_link.md` | S3 — Assignment 3 | prompt and link, to share before the user tests |
-| `04_architecture.md` | S4 | |
+| `04_architecture.md` | S4 - Assignment 4 | four steps, a gate between them, a person where the money or the customer is; figures from the first eval run |
 | `05_metrics.md` | S5 | |
 | `06_ab_protocol.md` | S6 | |
 | `07_operations.md` | S7 | |
 | `08_launch_memo.md` | S8 | |
-| `spec.md` | S3 skeleton → S4 v2 | skeleton done |
-| `/evals`, `/kb` | from S3 | 20 cases, labels to be reviewed by the team; 12 synthetic help-center articles |
-| `/prototype` | from S4 | |
+| `spec.md` | S3 skeleton → S4 v2 | v2 done, after the first eval run |
+| `/evals`, `/kb` | from S3, S4 | 50 cases (labels frozen before the run, to be reviewed by the team), the run output and `report_v0.md`: 27 % proxy against the 45 % criterion, two graders still to grade; 12 synthetic help-center articles |
+| `/prototype` | from S4 | four steps (router, guard + policy check, retrieve + draft, evals + surface); run once, template drafter |

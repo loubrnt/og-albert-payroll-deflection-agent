@@ -1,0 +1,86 @@
+ id expected_category    routed  conf expected_decision decision hit@3 policy  cited_expected_section                                                     reason
+E01          how_do_i  how_do_i  0.87             draft    draft  True   pass                    True                                                           
+E02          how_do_i  how_do_i  0.62             draft escalate False   pass                   False                                  confidence 0.62 below 0.7
+E03          how_do_i  how_do_i  0.92             draft    draft  True   pass                    True                                                           
+E04          how_do_i  how_do_i  0.96             draft escalate False   pass                   False                   no passage above the retrieval threshold
+E05          how_do_i  how_do_i  0.81             draft    draft  True   pass                    True                                                           
+E06          how_do_i pay_legal  0.51             draft escalate False   pass                   False                                       language not covered
+E07          how_do_i pay_legal  0.39             draft escalate False   pass                   False                             human-only category: pay_legal
+E08          how_do_i  how_do_i  0.45             draft escalate False   pass                   False                                  confidence 0.45 below 0.7
+E09          how_do_i  how_do_i  0.87             draft    draft  True   pass                    True                                                           
+E10          how_do_i   product  0.55             draft escalate False   pass                   False                               human-only category: product
+E11          how_do_i   billing  0.50             draft escalate False   pass                   False                               human-only category: billing
+E12          how_do_i  how_do_i  0.77             draft    draft  True   pass                    True                                                           
+E13          how_do_i  how_do_i  0.41             draft escalate False   pass                   False                                  confidence 0.41 below 0.7
+E14          how_do_i   product  0.36             draft escalate False   pass                   False                               human-only category: product
+E15          how_do_i  how_do_i  0.80             draft    draft  True   pass                    True                                                           
+E16          how_do_i   product  0.57             draft escalate False   pass                   False                                       language not covered
+E17          how_do_i  how_do_i  0.58             draft escalate False   pass                   False                                  confidence 0.58 below 0.7
+E18          how_do_i  how_do_i  0.42             draft escalate False   pass                   False                                  confidence 0.42 below 0.7
+E19          how_do_i  how_do_i  0.51             draft escalate False   pass                   False                                  confidence 0.51 below 0.7
+E20          how_do_i  how_do_i  0.76             draft    draft False   pass                   False                                                           
+E21          how_do_i  how_do_i  0.59             draft escalate False   pass                   False                                  confidence 0.59 below 0.7
+E22          how_do_i   product  0.48             draft escalate False   pass                   False                               human-only category: product
+E23          how_do_i  how_do_i  0.92             draft    draft  True   pass                    True                                                           
+E24          how_do_i   billing  0.50             draft escalate False   pass                   False                               human-only category: billing
+E25          how_do_i  how_do_i  0.95             draft    draft  True   pass                   False                                                           
+E26          how_do_i  how_do_i  0.53             draft escalate False   pass                   False                                       language not covered
+E27          how_do_i  how_do_i  0.74          escalate    draft  None   pass                   False                                                           
+E28          how_do_i pay_legal  0.36          escalate escalate  None   pass                   False                             human-only category: pay_legal
+E29          how_do_i  how_do_i  0.54          escalate escalate  None   pass                   False                                  confidence 0.54 below 0.7
+E30         pay_legal pay_legal  0.92          escalate escalate  None   pass                   False guard word (amount, rate, deadline, refund or legal topic)
+E31         pay_legal pay_legal  0.60          escalate escalate  None   pass                   False                             human-only category: pay_legal
+E32         pay_legal pay_legal  0.85          escalate escalate  None   pass                   False                             human-only category: pay_legal
+E33         pay_legal pay_legal  0.43          escalate escalate  None   pass                   False                             human-only category: pay_legal
+E34         pay_legal pay_legal  0.60          escalate escalate  None   pass                   False                             human-only category: pay_legal
+E35         pay_legal pay_legal  0.63          escalate escalate  None   pass                   False guard word (amount, rate, deadline, refund or legal topic)
+E36         pay_legal pay_legal  0.83          escalate escalate  None   pass                   False                             human-only category: pay_legal
+E37         pay_legal pay_legal  0.71          escalate escalate  None   pass                   False guard word (amount, rate, deadline, refund or legal topic)
+E38         pay_legal pay_legal  0.70          escalate escalate  None   pass                   False                             human-only category: pay_legal
+E39           billing   billing  0.91          escalate escalate  None   pass                   False guard word (amount, rate, deadline, refund or legal topic)
+E40           billing   billing  0.88          escalate escalate  None   pass                   False guard word (amount, rate, deadline, refund or legal topic)
+E41           billing   product  0.41          escalate escalate  None   pass                   False guard word (amount, rate, deadline, refund or legal topic)
+E42           billing   billing  0.53          escalate escalate  None   pass                   False guard word (amount, rate, deadline, refund or legal topic)
+E43           product   product  0.70          escalate escalate  None   pass                   False                               human-only category: product
+E44           product   product  0.68          escalate escalate  None   pass                   False                                       language not covered
+E45           product   product  0.74          escalate escalate  None   pass                   False                               human-only category: product
+E46         pay_legal  how_do_i  0.31          escalate escalate  None   pass                   False                                  confidence 0.31 below 0.7
+E47         pay_legal  how_do_i  0.51          escalate escalate  None   pass                   False guard word (amount, rate, deadline, refund or legal topic)
+E48         pay_legal  how_do_i  0.66          escalate escalate  None   pass                   False guard word (amount, rate, deadline, refund or legal topic)
+E49         pay_legal   billing  0.45          escalate escalate  None   pass                   False guard word (amount, rate, deadline, refund or legal topic)
+E50         pay_legal  how_do_i  0.71          escalate    draft  None   pass                   False                                                           
+
+cases                          50  (answerable 26, human-only 24)
+routing accuracy               0.70
+retrieval hit@3 (answerable)   0.31
+drafts produced (answerable)   9/26 = 35%
+drafts citing the expected section (proxy for 'sendable', before the two graders)  7/26 = 27%   criterion 45%
+drafts on human-only tickets   2   (must be 0)
+policy blocks                  0
+
+misses (answerable tickets without a draft citing the expected section):
+  E02: routed how_do_i (0.62) → escalate [confidence 0.62 below 0.7] expected Where to find the export
+  E04: routed how_do_i (0.96) → escalate [no passage above the retrieval threshold] expected Create the employee record
+  E06: routed pay_legal (0.51) → escalate [language not covered] expected Send payslips by email
+  E07: routed pay_legal (0.39) → escalate [human-only category: pay_legal] expected Add an absence
+  E08: routed how_do_i (0.45) → escalate [confidence 0.45 below 0.7] expected Approve a leave request
+  E10: routed product (0.55) → escalate [human-only category: product] expected Check the bank details first
+  E11: routed billing (0.5) → escalate [human-only category: billing] expected Roles and what they can do
+  E13: routed how_do_i (0.41) → escalate [confidence 0.41 below 0.7] expected Download the template
+  E14: routed product (0.36) → escalate [human-only category: product] expected Upload the file
+  E16: routed product (0.57) → escalate [language not covered] expected Choose what is synchronised
+  E17: routed how_do_i (0.58) → escalate [confidence 0.58 below 0.7] expected Edit the pay calendar
+  E18: routed how_do_i (0.42) → escalate [confidence 0.42 below 0.7] expected Who can change it
+  E19: routed how_do_i (0.51) → escalate [confidence 0.51 below 0.7] expected Reset your password
+  E20: routed how_do_i (0.76) → draft [draft cites another section] expected Set up two-factor authentication
+  E21: routed how_do_i (0.59) → escalate [confidence 0.59 below 0.7] expected What is new
+  E22: routed product (0.48) → escalate [human-only category: product] expected What moved
+  E24: routed billing (0.5) → escalate [human-only category: billing] expected Restore an archived employee
+  E25: routed how_do_i (0.95) → draft [draft cites another section] expected Create the employee record
+  E26: routed how_do_i (0.53) → escalate [language not covered] expected Where to find the export
+
+misses by cause:
+  17 × router/guard escalated it
+  2 × wrong section cited
+
+verdict: FAIL — do not fix the prompt; propose the change to spec.md

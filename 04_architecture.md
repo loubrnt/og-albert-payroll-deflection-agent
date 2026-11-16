@@ -1,58 +1,54 @@
-# 04 · Architecture — OG Albert · Tier-1 payroll documentation deflection agent
+# 04 · Architecture — OG Albert · Tier-1 deflection agent
 
-> **Status: v0, design only. The prototype is not built yet.** This file describes the design in `03_product_brief.md` and `spec.md`. Once `/prototype` exists, every line must be checked against it, and §6 and §8 completed.
+> Describes the prototype that was actually built (`/prototype`, run on 9 November 2026), not the one we plan. It replaces the design-only v0 of this file (written from `03_product_brief.md` and `spec.md` before the prototype existed); the v0 points the prototype does not cover yet are kept below.
 
 ## 1. One-line description
-An agent that answers HR managers' "how do I…" payroll questions from the help center with a cited article, and hands anything touching an amount, a named employee or a legal deadline to a person.
-
-In the prototype, a person approves every draft (L2). In production, answers go out on documentation questions with 5 % sampling (L3).
+A copilot that, for the company's tier-1 support agents, routes each ticket, drafts a cited reply for "how do I…" questions from the help centre, and hands pay, legal, billing and product tickets to a person; nothing is sent without the agent in the prototype.
 
 ## 2. The diagram
-
 ```
-ticket ─▶ [1 router] ─▶ [2 guard rule] ─▶ [3 retrieve] ─▶ [4 draft] ─▶ [5 policy check] ─▶ ⊘ approval ─▶ sent + logged
-              │              │                 │                            │          (prototype: every draft
-              │ low          │ human-only      │ no passage                 │ block     production: 5 % sampled)
-              │ confidence   │ topic           │ above the floor            │
-              ▼              ▼                 ▼                            ▼
-          ⊘ abstention ─────────────▶ human queue, with passages and reason ◀┘
-
-⏻ switch: the Head of Support can turn the agent off for everyone, for one category or for one customer
+ticket ──▶ [1 router] ──▶ [2 guard] ──▶ [3 retrieve + draft] ──▶ [4 policy check] ──▶ ⊘ agent approves / samples ──▶ sent
+            TF-IDF+LR      rules          TF-IDF by section        rules (block only)
+                              │ guard word · low confidence · human-only class       │ block
+                              │ · language not covered · no passage                  │
+                              └──────────────────────▶ escalate to a person (reason + passages) ◀┘
+⏻ switch: the Head of Support can switch the agent off for everyone, for a category or for one customer
+🙋 "Talk to a person" is always visible to the customer
 ```
 
 ## 3. Component table
-
-| # | Component | Rung (1 rules · 2 classical ML · 3 pretrained model · 4 custom) | Pattern | Trust level | Checkpoint ⊘ | Metric |
+| # | Component | Rung (1 rules · 2 classical ML · 3 pretrained model · 4 custom) | Pattern | Trust level (L1–L4) | Checkpoint ⊘ | Metric observed |
 |---|---|---|---|---|---|---|
-| 1 | Router: TF-IDF + logistic regression → category and confidence | 2 | routing | L4 above the threshold | abstention below the threshold | routing accuracy; recall on human-only tickets |
-| 2 | Guard rule: amount, rate, contribution, deadline, refund, price, legal, named employee | 1 | routing | L4, can only escalate | abstention on every human-only topic | drafts on human-only tickets (must be 0) |
-| 3 | Retrieval: TF-IDF by section, top 3 | 2 | prompt chaining (augmented LLM) | L3 | none; a retrieval floor triggers `NO_DRAFT` | hit@3 |
-| 4 | Draft: pretrained model, passages only, "cite or abstain" | 3 | prompt chaining | L2 in the prototype · L3 in production | approval in the prototype · 5 % sampling in production | answers two graders would send without editing |
-| 5 | Policy check: blocks any amount, deadline or refund promise | 1 | prompt chaining (gate) | L4, can only block | abstention: the reason is shown, the draft cannot be approved | policy misses (must be 0) |
-| 6 | Send and log | — | — | person only in the prototype · L3 in production | approval in the prototype | 7-day reopen rate (live traffic only) |
+| 1 | Router (`router.py`) | 2 | routing (classify, then dispatch) | L4 above threshold, else person | abstention (below 0.70) | routing accuracy 70 % |
+| 2 | Guard (`route_rule.py`) | 1 | routing gate | L4 (can only escalate) | abstention | drafts on human-only: 2 (must be 0) |
+| 3 | Retrieve + draft (`retrieve.py`, `draft.py`) | 2 (retrieval) + 3 (draft; template in v0, model optional) | prompt chaining: retrieve → draft | L3 production · L2 prototype | approval (prototype) · sampling 10 % (production) | hit@3 31 %; cited expected section 27 % |
+| 4 | Policy check (`policy.py`) | 1 | gate between draft and send | L4 (can only block) | abstention | policy blocks: 0 |
 
 ## 4. Workflow or agent?
-**A workflow.** The path can be drawn in advance: classify, guard, retrieve, draft, check. Each step can fail in a known place with a known fallback, the cost per ticket is predictable, and the rules that protect pay figures do not depend on the model's judgement. An agent choosing its own tools would put a pay-figure answer one jailbreak away, for no benefit on a bounded task. To move a step up, the eval-set would have to show that tickets really need a path we cannot draw in advance; multi-question tickets would be the first candidate.
+A **workflow**: the path is fixed in advance — route, guard, retrieve, draft, check — with a gate between each step, and the model never chooses its own tools or steps. That is the right choice for a support agent whose worst error (a pay figure or a legal deadline) is costly and must be impossible, not improbable: the rules can only stop things, never invent. To move one step up (to an agent that decides to look at the customer's account, call a ticket tool, or ask a clarifying question), we would need (a) a router and guard that hold at zero drafts on human-only tickets on a fresh 200-case set, (b) account isolation tested, (c) a rollback trigger tested live.
 
 ## 5. Fallbacks
-- **Retrieval finds nothing:** no passage above the floor → `NO_DRAFT`, escalate. The model never answers from general knowledge.
-- **Confidence below the threshold:** escalate, with the category and the passages shown to the person. The threshold is still to be calibrated, on a set separate from the eval-set.
-- **Policy check blocks the draft:** the reason is shown to the person; no draft can be approved.
-- **API down:** escalate; the ticket goes to the human queue.
-- **Language other than English or French, two questions with one on pay or a deadline, or an article older than 6 months:** escalate.
+- retrieval finds nothing: `NO_DRAFT`, escalate with the reason *(v0 weakness: the floor 0.05 is too low — E27 got a draft; fixed in `spec.md` v2)*
+- the model's confidence is below the threshold: escalate, the category and passages shown to the person
+- the policy checker blocks the draft: the reason is shown to the person; no draft, not approvable
+- the API is down: the template drafter answers with the same contract (it is the one used in v0)
+- language other than English or French, two questions in one ticket with one on pay or a deadline, or an article older than 6 months: escalate *(from the v0 design; only the language check exists in the prototype)*
 
 ## 6. The override switch ⏻
-- **Who can switch it off:** the Head of Support (owner of the agent in `governance.md`). A named person and a night-time backup are still to be set.
-- **Scope:** everyone · one category · one customer.
-- **Tested on:** not tested yet. A date and the people who ran the test must be added here once it has been done.
+- Who can switch it off: the Head of Customer Support (and their delegate). A named person and a night-time backup are still to be set.
+- Scope: one ticket · one category · one customer · everyone.
+- Tested on: **not yet tested** — in the prototype the switch is a button that does nothing. To test with the team before the oral: switch off, check that the next 5 tickets all go to the human queue with the reason "agent off", note the date and who did it here.
 
 ## 7. Data
-- **Training and demo data:** synthetic help center of 12 articles in `kb/` (branch `a3-mvp-brief`). Synthetic router training tickets are still to be created.
-- **Evaluation data:** `evals/eval_set_v0.csv`, 20 synthetic cases today, 50 for Assignment 4, 200 for Assignment 5. Inputs and labels were drafted by an AI assistant: the team must review the labels by hand before any run. Never used for tuning; any ticket looked at while building is named in `evals/report_v0.md`.
-- **Personal data:** none in this repository. In production, employee payroll data is not sent to the model and retrieval is limited to the shared help center (see `governance.md`).
+- Training / demo data (`data/`): `tickets_synthetic.csv` (263 rows, generated from templates, labelled by category) and `demo_tickets.csv` (8 demo tickets for the inbox). Synthetic. The help centre (`kb/`, 12 articles) is synthetic too, written for the course.
+- Evaluation data (`evals/eval_set_v0.csv`): 50 cases, inputs drafted by an AI assistant, labels drafted before the run and hashed; **review by the team pending**; never used for tuning; all 50 are demo data after the first run.
+- Personal data present? No (synthetic). In production: tickets contain employees' personal data; employee payroll data is not sent to the model and retrieval is limited to the shared help centre — see `governance.md`.
+- Live-traffic metric, not measurable on the eval-set: the 7-day reopen rate of sent answers (read in the Q1 pilot, see `02_investment_memo.md`).
 
 ## 8. Eval result v0
-Not run yet: the prototype does not exist. Criterion to report against: at least 45 % of automatable "how do I…" tickets get an answer two graders would send without editing, with zero answers stating an amount.
+"**27 %** of the answerable 'how do I…' tickets got a draft citing the expected article and section (7 of 26) — the criterion is 45 %; **2** human-only tickets received a draft (must be 0). The two-grader number is pending." Full report: `evals/report_v0.md`.
 
-## 9. What we would build next
-To be written from the three most frequent misses of `evals/report_v0.md`.
+## 9. What you would build next (3 lines max)
+1. A router with more and more varied phrasings plus an embedding rung; thresholds set on a separate calibration set.
+2. A maintained guard-topics list owned by the payroll specialists, and a retrieval floor calibrated on "no article" tickets.
+3. A fresh 200-case eval-set (Assignment 5) and the model-based drafter, graded by two people.
