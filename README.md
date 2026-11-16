@@ -7,7 +7,7 @@
 | Name | Git handle | Also in the Agentic Workflows team? |
 |---|---|---|
 | Alexis Maeder | | yes |
-| Colin Pietri | | yes |
+| Colin Pietri | colinpietri20 | yes |
 | Mathis Meimoun | Mathmnms | yes |
 | Cristian Larrain | cristianlrn | yes |
 | Lou Brunet | loubrnt | yes |
