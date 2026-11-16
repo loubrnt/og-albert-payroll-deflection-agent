@@ -50,6 +50,10 @@
 - **Eval data:** `evals/` in this private repository; visible to the five team members and the teachers; synthetic, no personal data. Labels were hashed before the first run (`evals/LABELS_FROZEN.txt`).
 - **What the first eval showed (governance relevance):** two human-only tickets received a draft (E27 no article, E50 how-to + minimum wage). The guard topics list is therefore a governance object: it needs an owner (payroll specialists / Legal) and a review cycle — see `spec.md` v2.
 
-## Session 5 — counter-metrics and the segments we report (to come)
+## Session 5 — counter-metrics and the segments we report
+- **Counter-metrics:** the 7-day reopen rate of answered tickets and the CSAT of agent-answered against human-answered tickets, read in the Q1 pilot (`05_metrics.md` §3).
+- **Segments reported:** language (English, French) · plan (Scale, Start) · category (answerable, human-only) · month-end against the rest of the month.
+- **Fairness metric:** equal error rates across segments (wrong-answer rate and escalation rate per language and per plan); no segment above the 4 % wrong-answer threshold.
+- **Harm threshold that stops the rollout, and its owner:** in any language × plan segment, one amount leak in the sample, or a 7-day reopen rate above the human baseline for two weeks in a row, or a wrong-answer rate above 4 %, sends the agent back to the previous adoption step; the **Head of Customer Support** decides on the switch ⏻.
 ## Session 6 — protected segments and the harm threshold that stops an experiment (to come)
 ## Session 7 — accountable owner, rollback authority, incident path (to come)

@@ -31,7 +31,7 @@
 | `03_user_research.md` | S3 — Assignment 3 | guide ready, **conversations to hold** |
 | `03_prototype_link.md` | S3 — Assignment 3 | prompt and link, to share before the user tests |
 | `04_architecture.md` | S4 - Assignment 4 | four steps, a gate between them, a person where the money or the customer is; figures from the first eval run |
-| `05_metrics.md` | S5 | |
+| `05_metrics.md` | S5 - Assignment 5 | five sections written; numbers traced to `02_sizing.xlsx` and `evals/report_v0.md`; agreement rates and the labels of the 50 new cases pending (`evals/README.md`) |
 | `06_ab_protocol.md` | S6 | |
 | `07_operations.md` | S7 | |
 | `08_launch_memo.md` | S8 | |
