@@ -55,5 +55,9 @@
 - **Segments reported:** language (English, French) · plan (Scale, Start) · category (answerable, human-only) · month-end against the rest of the month.
 - **Fairness metric:** equal error rates across segments (wrong-answer rate and escalation rate per language and per plan); no segment above the 4 % wrong-answer threshold.
 - **Harm threshold that stops the rollout, and its owner:** in any language × plan segment, one amount leak in the sample, or a 7-day reopen rate above the human baseline for two weeks in a row, or a wrong-answer rate above 4 %, sends the agent back to the previous adoption step; the **Head of Customer Support** decides on the switch ⏻.
-## Session 6 — protected segments and the harm threshold that stops an experiment (to come)
-## Session 7 — accountable owner, rollback authority, incident path (to come)
+## Session 6 — protected segments and the harm threshold that stops an experiment
+- **Experiments on real users.** Any experiment on real customers is signed by the Head of Customer Support and read by the DPO before it starts; the decision rule and the harm threshold (Session 5 line above) are written before the first unit (`06_07_experiments_operations.md` §2). Segments pre-registered: language, plan, category, month-end against the rest of the month.
+## Session 7 — accountable owner, rollback authority, incident path
+- **The switch.** The Head of Customer Support can move the system to suggest-only or off, by day; the on-call engineer by night. Last tested 16 November 2026 on the prototype (`prototype/test_switch.py`, log `data/switch_log.jsonl`), next test 26 November.
+- **The trace.** One trace per ticket, kept 12 months in Langfuse (EU); the DPO answers a regulator from it, the Head of Customer Support answers a customer.
+- **Who answers.** The company answers for what the system says to its customers (Moffatt v. Air Canada, 2024 BCCRT 149); the AI-assistant label and "talk to a person" stay visible on every answer.
