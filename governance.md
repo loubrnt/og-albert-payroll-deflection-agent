@@ -46,7 +46,7 @@
   - *abstention* — the router (below 0.70), the guard (guard words, human-only class, language, no passage) and the policy check hand the ticket over by themselves;
   - *approval* — in the prototype every draft is approved by the agent before sending (L2); every escalated ticket is handled by a person;
   - *sampling* — in production on "how do I…" (L3), 10 % of answered tickets are read by an agent each day.
-- **Override switch ⏻:** the Head of Customer Support (or a delegate) can switch the agent off for everyone, for a category or for one customer. **Tested on: not yet** (in the prototype it is a button without effect). Test to run before the oral: switch off, check the next 5 tickets go to the human queue with the reason "agent off", write the date and who did it here.
+- **Override switch ⏻:** the Head of Customer Support (or a delegate) can move the agent to suggest-only or off. In the prototype the switch is real (`prototype/switch.py`, scope: everyone); category and customer scopes are design only. **Tested on 16 and 20 November 2026** (`prototype/test_switch.py`, log `data/switch_log.jsonl`), see Session 7.
 - **Eval data:** `evals/` in this private repository; visible to the five team members and the teachers; synthetic, no personal data. Labels were hashed before the first run (`evals/LABELS_FROZEN.txt`).
 - **What the first eval showed (governance relevance):** two human-only tickets received a draft (E27 no article, E50 how-to + minimum wage). The guard topics list is therefore a governance object: it needs an owner (payroll specialists / Legal) and a review cycle — see `spec.md` v2.
 
@@ -58,6 +58,6 @@
 ## Session 6 — protected segments and the harm threshold that stops an experiment
 - **Experiments on real users.** Any experiment on real customers is signed by the Head of Customer Support and read by the DPO before it starts; the decision rule and the harm threshold (Session 5 line above) are written before the first unit (`06_07_experiments_operations.md` §2). Segments pre-registered: language, plan, category, month-end against the rest of the month.
 ## Session 7 — accountable owner, rollback authority, incident path
-- **The switch.** The Head of Customer Support can move the system to suggest-only or off, by day; the on-call engineer by night. Last tested 16 November 2026 on the prototype (`prototype/test_switch.py`, log `data/switch_log.jsonl`), next test 26 November.
+- **The switch.** The Head of Customer Support can move the system to suggest-only or off, by day; the on-call engineer by night. Tested 16 November 2026 (cristianlrn) and again on 20 November 2026 (Alexis Maeder, a second member) on the prototype (`prototype/test_switch.py`, log `data/switch_log.jsonl`), both passed; next test 26 November.
 - **The trace.** One trace per ticket, kept 12 months in Langfuse (EU); the DPO answers a regulator from it, the Head of Customer Support answers a customer.
 - **Who answers.** The company answers for what the system says to its customers (Moffatt v. Air Canada, 2024 BCCRT 149); the AI-assistant label and "talk to a person" stay visible on every answer.
