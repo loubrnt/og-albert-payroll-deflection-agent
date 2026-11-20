@@ -31,7 +31,7 @@
 | `03_user_research.md` | S3 — Assignment 3 | guide ready, **conversations to hold** |
 | `03_prototype_link.md` | S3 — Assignment 3 | prompt and link, to share before the user tests |
 | `04_architecture.md` | S4 - Assignment 4 | four steps, a gate between them, a person where the money or the customer is; figures from the first eval run |
-| `05_metrics.md` | S5 - Assignment 5 | five sections written; numbers traced to `02_sizing.xlsx` and `evals/report_v0.md`; judge run on the 30 golden rows on 20 November (`evals/judge_run_v1.md`); the labels of the 50 new cases (E51-E100) and the two human grader columns are pending, then the agreement rates (`evals/README.md`) |
+| `05_metrics.md` | S5 - Assignment 5 | five sections written; numbers traced to `02_sizing.xlsx` and `evals/report_v0.md`; judge run on the 30 golden rows on 20 November (`evals/judge_run_v1.md`); labels of the 50 new cases (E51-E100) frozen and first run on them (`evals/report_v1_fresh.md`: 29 % proxy, 4 drafts where none is allowed); the two human grader columns are pending, then the agreement rates (`evals/README.md`) |
 | `06_07_experiments_operations.md` | S6 + S7 - Assignment 6-7 | five sections written; rollback tested on the prototype on 16 and 20 November (`prototype/test_switch.py`, two team members); the final push (`08_launch_memo.md`, tag `v1.0`) follows on 26 November |
 | `08_launch_memo.md` | S8 | |
 | `spec.md` | S3 skeleton → S4 v2 | v2 done, after the first eval run |
