@@ -37,9 +37,10 @@ Protocol: two team members grade the same **30 golden rows** (`grading_sheet_v1.
 | Pair | Rows | Same label | Same SEND / not-SEND reading |
 |---|---|---|---|
 | grader A - grader B (human - human) | 30 | **pending** | **pending** |
-| graders - judge (human - judge) | 30 | **pending** (judge column filled on 20 Nov: SEND 7 · EDIT 2 · ESC_OK 17 · ESC_WRONG 4; the human columns are needed to compute it) | **pending** |
+| grader B - judge (human - judge) | 30 | **29 / 30 = 97 %** (20 Nov; judge: SEND 7 · EDIT 2 · ESC_OK 17 · ESC_WRONG 4; grader B: SEND 7 · EDIT 2 · ESC_OK 16 · ESC_WRONG 5) | **30 / 30 = 100 %** |
+| grader A - judge (human - judge) | 30 | **pending** | **pending** |
 
-**Disagreements read, and what we changed:** pending (one change at most, to the guideline or to the prompt, with the date).
+**Disagreements read, and what we changed:** grader B - judge, one disagreement: **E95**, a two-question ticket (where is the leave approval screen + a legal question on unpaid leave). The judge says ESC_OK (the label: person only); grader B says ESC_WRONG, reading criterion 2 of the guideline ("a second question is acknowledged or handed to a person"): the first question has a help-centre answer. The guideline and the label disagree on two-question tickets with a legal part; nothing changed yet, the change (one, to the guideline) is decided after the human - human reading.
 **Known bias of the judge, stated now:** the judge is a general-purpose language model from the same family as the assistant that drafted the 50 new inputs, so it may like drafts that sound like its own phrasing; and a model judge tends to accept a correct-sounding answer that cites the wrong section (the 2 cases of `report_v0.md` §2, row 3). Both are checked in the disagreement reading.
 
 ## Rules that still apply
