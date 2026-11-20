@@ -1,0 +1,62 @@
+# 05 · Metrics - OG Albert · Tier-1 deflection agent (P1, HR & payroll SaaS)
+
+> Session 5 deliverable. Five sections = the five moves of the session. Every number traces to `02_sizing.xlsx` (cell given as `Sheet!Cell`) or to `evals/report_v0.md` (section given as `§`). A number that is **derived** shows its calculation and is marked *derived*. Nothing here was measured on real customers: the product and business lines are hypotheses until the Q1 pilot.
+
+## 1 · Place the number - the stack for our agent
+Our Session 4 number is the level-2 line: **27 %** of the answerable "how do I…" tickets get a draft citing the expected article and section (7 of 26, `report_v0.md` §1). It is an automatic proxy on 50 cases we have already seen; the two-grader number is still pending.
+
+| Level | Question | Our metric | Value today (or "not yet") | Produced by | Owner | Clock |
+|---|---|---|---|---|---|---|
+| 5 Business | does it move the P&L? | Net annual value, year 1, against the hurdle of 150 k€ (`Inputs!D60`) | *derived* 17 k€ at the 27 % proxy (§4); sizing base 206 k€ at 50 % (`Decision!D17`) | model in `02_sizing.xlsx`, fed by live numbers in the Q1 pilot | Head of Support (agent) with Finance | months |
+| 4 Product | does the user adopt it and get the job done? | "how do I…" tickets resolved without human touch **and not reopened within 7 days**, share of the automatable ones | not yet (Q1 pilot); criterion 45 % (`report_v0.md` §1) | online measurement, ticketing system | Head of Support | weeks |
+| 3 Guardrails & responsible AI | does it stay inside the lines - for everyone? | Drafts on human-only tickets (must be 0) and answers that state an amount (must be 0) | **2** drafts on human-only tickets (E27, E50, `report_v0.md` §1); amount leaks 0 on 50 cases | eval-set + daily sampling | Head of Support; Legal for the guard list | days |
+| 2 AI system | does the workflow complete the task? | Drafts two graders would send without editing, share of the answerable tickets | **27 %** proxy (7/26); graded number pending (`report_v0.md` §1) | eval-set + two graders | eval owner | hours |
+| 1 Model | is the component right? | Router accuracy; retrieval hit@3 on answerable tickets | **70 %** (35/50); **31 %** (8/26) (`report_v0.md` §1) | offline eval-set, every commit | eval owner | seconds |
+
+## 2 · Decide when to stop - the stop criterion
+*We stop improving the share of sendable drafts at **45 %** (the criterion of `report_v0.md` §1) because the next-level metric stops changing the action: from 45 % the base case clears the hurdle (164,682 € against 150,000 €, `Decision!C33`) and the decision is already "scale beyond the Q1 pilot"; each further point is worth about **8.2 k€ a year** (*derived*: 287,576 − 164,682 = 122,894 € for 15 points, `Decision!C33:C34`) while each model change costs 6,000 € to re-evaluate (`Inputs!D56`) and the eval-set upkeep is 40,000 € a year (`Inputs!D51`).*
+
+- **Component metric and value:** sendable drafts, 45 % (level 2), measured first on the **50 fresh cases** of `evals/eval_set_v1.csv` (E51-E100, labelled by hand before any run), not on the 50 cases already read; the 200 fresh tickets of the criterion (`03_product_brief.md` §7) are the next step (shadow mode, `06_07_experiments_operations.md` §1). The Assignment 5 brief asks for 100 cases; 200 is the production standard, not done yet.
+- **The level-above metric that stops responding:** net annual value above the hurdle: below the flip point (≈ 43 %, `Decision` sensitivity) the action is "stay in the pilot"; at 45 % and above it is "scale"; more points move the amount, not the action.
+- **Cost of the next point:** one more model or rule change = 6,000 € of re-evaluation (`Inputs!D56`) plus supervision time (1.5 FTE, `Inputs!D52`); with 4 model changes a year in the base case (`Inputs!D55`) that is 24,000 € a year (`Decision!D13`).
+- **What is a floor, not a stop (any miss blocks the release):** **zero drafts on human-only tickets** and **zero answers that state, compute or confirm an amount** (`governance.md` Session 1 #4; `spec.md` done criteria). Today: 2 drafts on human-only tickets, so the floor is **not met**.
+
+## 3 · Choose what to protect - the hierarchy, by segment
+| Kind | Metric | Numerator / denominator | Level | Lag | Source & owner |
+|---|---|---|---|---|---|
+| **Primary (1)** | Tickets resolved without human touch and not reopened in 7 days | tickets answered by the agent and not reopened in 7 days / automatable "how do I…" tickets received | 4 Product | 7 days after sending | ticketing system · Head of Support |
+| Guardrail (3) | Amount leaks | answers that state, compute or confirm an amount / answers drafted or sent (sampled). Threshold **0** | 3 | days | daily sampling of answered tickets (10 %, `governance.md` S4) · Head of Support; Legal for the content of the guard list |
+| Guardrail | Drafts on human-only tickets | drafts or sends on tickets that belong to a person (pay, legal, billing, product) / human-only tickets received. Threshold **0** (today 2/24 in the eval-set) | 3 | days | eval-set at every change; production sample · Head of Support |
+| Guardrail | Wrong-answer rate | answers a reviewer marks wrong or not sendable / answers sampled. Threshold **4 %** per segment (`Inputs!D26` base) | 3 | days to weeks | weekly human sample · Head of Support |
+| Counter-metric (2) | 7-day reopen rate of answered tickets | answered tickets that come back within 7 days / answered tickets. Must not exceed the human baseline | 4 | 7 days | ticketing system · Head of Support |
+| Counter-metric | Customer satisfaction on answered tickets | CSAT of agent-answered tickets against human-answered ones, same weeks, same segment | 4 | weeks | CSAT survey · Head of Support |
+
+- **Segments reported** (from the Session 3 audit, `governance.md`): language (English, French) · plan (Scale, Start) · category (answerable "how do I…", human-only) · month-end against the rest of the month (the drift period). Gaps named in the audit and reported separately: other languages, legacy plans, questions about the latest release.
+- **Fairness metric:** **equal error rates across segments**: the wrong-answer rate and the escalation rate of the answerable tickets, per language and per plan. No segment may sit above the 4 % wrong-answer threshold, and a French or Start-plan segment that escalates much more than the English Scale one is read as a service gap, not as safety.
+- **Harm threshold on the counter-metric, per segment, that stops the rollout - and its owner:** *in any language × plan segment, one amount leak in the sample, or a 7-day reopen rate above the human baseline for two weeks in a row (`02_investment_memo.md` §3), or a wrong-answer rate above 4 %, sends the agent back to the previous adoption step (`Inputs!D39:D42`) and the Head of Customer Support decides on the switch ⏻.* (Copied into `governance.md`, Session 5.)
+- **How it could be gamed (the other team's line) → the repair:** the primary can be gamed by a ticket that is closed by the agent and never reopened because the customer gave up. Repair: the primary counts only tickets with no "talk to a person" click and no new ticket from the same customer on the same topic in 7 days; the CSAT counter-metric is read on the same tickets; and the weekly human sample re-reads a share of "resolved" answers.
+
+## 4 · Derive the business metrics - three, with expected effects (the oral)
+Volumes from the sizing: 22,000 "how do I…" tickets a month (`Upside!D8`), 68 % automatable (`Inputs!D18`) = 14,960 (`Upside!D9`); year-1 adoption factor 47.5 % (`Upside!D5`); human cost of a ticket 10 € (`Inputs!D9`); wrong answer 4 % at 8 € (`Inputs!D26`, `D30`); AI cost 0.06 € × 1.2 per conversation (`Inputs!D45:D46`); fixed costs 204,000 € (`Decision!D14`).
+
+| Business metric | Baseline (from `02_sizing.xlsx`) | Expected effect (from `evals/report_v0.md` × the cost line) | Lag | Read date | It is a hypothesis about… |
+|---|---|---|---|---|---|
+| **1. Tickets resolved without a human, year 1 (work avoided)** | 0 today. The same 14,960 automatable tickets a month go to the 60 agents (`Upside!D9`, `Inputs!D7`) | *derived*: at the 27 % proxy of `report_v0.md` §1, 14,960 × 27 % × 12 × 47.5 % = **≈ 23,000 tickets**, about 230 k€ gross at 10 €. At the 45 % criterion: ≈ 38,400 tickets, about 384 k€. Sizing base (50 %): 42,636 (`Upside!D38`) | weeks (adoption ramp 20 → 70 %, `Inputs!D39:D42`) | Q1 pilot, after the 200-case eval-set of 22 Nov | level 2 → level 4: a sendable draft becomes a ticket closed without a human |
+| **2. Net annual value, year 1** | hurdle 150,000 € (`Inputs!D60`); do-nothing 144,000 € (`Decision!D22`) | *derived*: gross 230,234 € − wrong answers 7,368 € − AI cost 1,658 € − fixed 204,000 € = **≈ 17 k€** at 27 %, below the hurdle. At 45 %: 164,682 € (`Decision!C33`). At the sizing base: 205,647 € (`Decision!D17`) | months | after the Q1 pilot, when deflection, error and supervision lines are measured | level 4 → level 5: the deflection rate is the one guess that flips the decision (flip point ≈ 43 %) |
+| **3. Quality of the answered tickets: no worse than human** *(a non-effect)* | wrong-answer rate 4 % (`Inputs!D26` base); human reopen and CSAT baselines: **not in the repo yet**, measured on human-handled tickets in the Q1 pilot | **non-effect**: 7-day reopen rate and CSAT of the agent-answered tickets stay **inside the band of the human baseline** (band centre = 0 difference; the ±width is set when the baseline is measured, because we have no number to derive it from today). Stop band: the harm threshold of §3 | 7 days (reopen), weeks (CSAT) | Q1 pilot, weekly read | level 3 → level 5: deflection does not buy savings with a loss of quality; the cost of a wrong answer is 8 € (`Inputs!D30`), a legal or pay error 300 to 500 € (`Inputs!D31:D32`) |
+
+**The tree (component → product → business), with the claimed effect sizes:**
+```
+router accuracy 70 %, hit@3 31 %  (level 1)           -> are what keeps level 2 at 27 % (report_v0 §2: misses 1 to 3)
+sendable drafts 27 % -> 45 % (level 2)                 -> +18 points of tickets closed without a human (level 4)
++18 points x 14,960 tickets x 12 x 47.5 % = about +15,300 tickets a year  -> about +153 k€ gross  -> net 17 k€ -> 165 k€ (level 5, Decision!C33)
+guardrails at 0 (level 3)                              -> keep the cost of a wrong answer out of the P&L (Upside!D13: 13.6 k€ a year at base)
+```
+All three are **hypotheses about an arrow**, to be tested in the Q1 pilot and in the experiment described in `06_07_experiments_operations.md`.
+
+## 5 · Make the judge trustworthy - the evaluation plan
+- **Eval-set v1:** `evals/eval_set_v1.csv`, **100 cases** = the 50 cases of v0 (demo data since the first run, `report_v0.md` §4) + 50 new cases. The inputs of the 50 new cases are synthetic and tagged (`origin`); stratified by language and plan (the v0 set had only 5 French cases out of 50) and by situation (answerable, no article, human-only, messy, two questions in one, adversarial wording). **Labels are written by a person, never by the model that drafted the inputs.** Status: see `evals/README.md` (labels of the 50 new rows to write). A golden set of 30 rows never changes.
+- **Grading guideline:** `evals/README.md` - five binary criteria with boundary examples, written before anybody grades. Two graders on the same 30 rows: **human-human agreement = pending** (computed by `evals/agreement.py` from the two grader columns).
+- **Judge:** a general-purpose language model (Claude Sonnet), prompt in `evals/judge_prompt.txt`, **run on the same 30 rows on 20 November 2026**, one case at a time (`evals/judge_run_v1.md`; labels in the `judge` column: SEND 7 · EDIT 2 · ESC_OK 17 · ESC_WRONG 4). **Human-judge agreement = pending** until the two human columns are filled. Known bias, to state in the README: the judge and the model that drafted the inputs are from the same family, so it can over-accept drafts that read like its own phrasing; and it tends to over-accept a correct-sounding answer that cites the wrong section (the 2 misses of `report_v0.md` §2, row 3).
+- **Cadence:** eval-set + judge at every change (each model or rule change, 6,000 € of re-evaluation, `Inputs!D56`) · human sample weekly.
+- *Optional, not graded, not done:* the red rows (`evals/adversarial_v0.csv`) and the level-1 assertions (`evals/promptfooconfig.yaml`).
