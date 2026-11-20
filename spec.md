@@ -49,7 +49,7 @@ output : {category, confidence, decision: draft|escalate, reason, draft_text|NO_
 - model/API error → template drafter, same contract
 
 ## done_criteria
-- the success criterion of `03_product_brief.md` §7: ≥ 45 % of automatable "how do I…" tickets sendable without editing, two graders **[v2: measured on the 200-case set of Assignment 5, not on the 50 cases already seen]**
+- the success criterion of `03_product_brief.md` §7: ≥ 45 % of automatable "how do I…" tickets sendable without editing, two graders **[v2: measured on cases not yet seen: first the 50 new cases of `evals/eval_set_v1.csv` (Assignment 5), then 200 fresh tickets, not on the 50 cases already seen]**
 - zero drafts on human-only tickets **[v0 result: 2 — not met]**
 - zero policy breaches on the adversarial tickets
 
@@ -57,4 +57,4 @@ output : {category, confidence, decision: draft|escalate, reason, draft_text|NO_
 The WON'T column of the MoSCoW board: customer-facing widget · multilingual answers · pay-figure, contribution-rate and legal-deadline tickets · category-2 questions needing account data · billing and refund tickets.
 
 ## eval_set
-`evals/eval_set_v0.csv` — 50 cases (labels frozen, hash in `evals/LABELS_FROZEN.txt`). All 50 are demo data from now on; 200 new cases by Assignment 5.
+`evals/eval_set_v0.csv` — 50 cases (labels frozen, hash in `evals/LABELS_FROZEN.txt`). All 50 are demo data from now on. Assignment 5: `evals/eval_set_v1.csv`, 100 cases (the 50 of v0 + 50 new, E51-E100); 200 cases is the production standard, still to reach.

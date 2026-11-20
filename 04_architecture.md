@@ -52,4 +52,4 @@ A **workflow**: the path is fixed in advance — route, guard, retrieve, draft, 
 ## 9. What you would build next (3 lines max)
 1. A router with more and more varied phrasings plus an embedding rung; thresholds set on a separate calibration set.
 2. A maintained guard-topics list owned by the payroll specialists, and a retrieval floor calibrated on "no article" tickets.
-3. A fresh 200-case eval-set (Assignment 5) and the model-based drafter, graded by two people.
+3. The 100-case eval-set of Assignment 5 (50 fresh cases), then 200, and the model-based drafter, graded by two people.
