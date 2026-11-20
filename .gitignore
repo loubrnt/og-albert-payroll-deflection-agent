@@ -1,3 +1,5 @@
 __pycache__/
 *.pyc
 .DS_Store
+data/switch.json
+__pycache__/

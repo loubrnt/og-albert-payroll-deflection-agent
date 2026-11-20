@@ -5,8 +5,9 @@
 |---|---|---|
 | `eval_set_v0.csv` | the 50 cases of Assignment 4, labels frozen on 9 November (`LABELS_FROZEN.txt`) | done; **demo data** since the first run (`report_v0.md` §4) |
 | `eval_set_v1.csv` | **100 cases** = the 50 of v0 + 50 new (`E51` to `E100`, batch `a5`) | inputs of the 50 new rows written; **their labels are still to be written by a person** (see below) |
-| `judge_prompt.txt` | the judge prompt, built from the guideline below | written; not run yet |
-| `grading_sheet_v1.csv` | the 30 golden rows with the prototype's output, for the two graders and the judge | built; **grader and judge columns empty** |
+| `judge_prompt.txt` | the judge prompt, built from the guideline below | written; **run on the 30 golden rows on 20 November 2026** (`judge_run_v1.md`) |
+| `grading_sheet_v1.csv` | the 30 golden rows with the prototype's output, for the two graders and the judge | built; column `judge` filled (20 Nov); **columns `grader_a` and `grader_b` still empty** |
+| `judge_run_v1.md` | the judge's five-line answer for each of the 30 rows, the model used, the passages given | done (20 Nov) |
 | `make_grading_sheet.py`, `agreement.py` | build the sheet; compute the agreement rates | ready |
 | `report_v0.md`, `eval_output_v0.*` | the first eval run | done |
 
@@ -30,12 +31,12 @@ A draft is **sendable as is** only if all five criteria are YES.
 The success criterion of `03_product_brief.md` (≥ 45 % of the automatable tickets "sendable without editing") counts the `SEND` labels over the answerable tickets.
 
 ## The two agreement rates (to fill after the grading)
-Protocol: two team members grade the same **30 golden rows** (`grading_sheet_v1.csv`: rows at positions 1, 4 and 8 of every ten in `eval_set_v1.csv`, fixed before any run), independently, in columns `grader_a` and `grader_b`, without seeing each other's column. Then the judge (`judge_prompt.txt`, one row at a time pasted into a chat) fills the column `judge`. Then `python evals/agreement.py`.
+Protocol: two team members grade the same **30 golden rows** (`grading_sheet_v1.csv`: rows at positions 1, 4 and 8 of every ten in `eval_set_v1.csv`, fixed before any run), independently, in columns `grader_a` and `grader_b`, without seeing each other's column. The judge (`judge_prompt.txt`, one row at a time) has filled the column `judge` (20 November 2026, Claude Sonnet, see `judge_run_v1.md`); **graders do not open `judge_run_v1.md` or look at the `judge` column before they have graded.** Then `python evals/agreement.py`.
 
 | Pair | Rows | Same label | Same SEND / not-SEND reading |
 |---|---|---|---|
 | grader A - grader B (human - human) | 30 | **pending** | **pending** |
-| graders - judge (human - judge) | 30 | **pending** | **pending** |
+| graders - judge (human - judge) | 30 | **pending** (judge column filled on 20 Nov: SEND 7 · EDIT 2 · ESC_OK 17 · ESC_WRONG 4; the human columns are needed to compute it) | **pending** |
 
 **Disagreements read, and what we changed:** pending (one change at most, to the guideline or to the prompt, with the date).
 **Known bias of the judge, stated now:** the judge is a general-purpose language model from the same family as the assistant that drafted the 50 new inputs, so it may like drafts that sound like its own phrasing; and a model judge tends to accept a correct-sounding answer that cites the wrong section (the 2 cases of `report_v0.md` §2, row 3). Both are checked in the disagreement reading.

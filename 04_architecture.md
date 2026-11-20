@@ -12,7 +12,7 @@ ticket ──▶ [1 router] ──▶ [2 guard] ──▶ [3 retrieve + draft] �
                               │ guard word · low confidence · human-only class       │ block
                               │ · language not covered · no passage                  │
                               └──────────────────────▶ escalate to a person (reason + passages) ◀┘
-⏻ switch: the Head of Support can switch the agent off for everyone, for a category or for one customer
+⏻ switch (on · suggest-only · off): Head of Customer Support by day, on-call engineer by night; prototype scope = everyone
 🙋 "Talk to a person" is always visible to the customer
 ```
 
@@ -35,9 +35,10 @@ A **workflow**: the path is fixed in advance — route, guard, retrieve, draft, 
 - language other than English or French, two questions in one ticket with one on pay or a deadline, or an article older than 6 months: escalate *(from the v0 design; only the language check exists in the prototype)*
 
 ## 6. The override switch ⏻
-- Who can switch it off: the Head of Customer Support (and their delegate). A named person and a night-time backup are still to be set.
-- Scope: one ticket · one category · one customer · everyone.
-- Tested on: **not yet tested** — in the prototype the switch is a button that does nothing. To test with the team before the oral: switch off, check that the next 5 tickets all go to the human queue with the reason "agent off", note the date and who did it here.
+- Who can switch it off: the Head of Customer Support (and their delegate) by day, the on-call engineer by night (`06_07_experiments_operations.md` §4-§5).
+- Positions: **on** (the pipeline runs) · **suggest-only** (drafts are shown to the agent, only a human sends) · **off** (every ticket goes to the human queue with the reason "agent off"; no router, no draft).
+- Scope: in the prototype the switch acts on **everyone** (`prototype/switch.py`, state in `data/switch.json`, read on every ticket, every change logged in `data/switch_log.jsonl`). The finer scopes of the design (one category, one customer) are not built yet.
+- Tested on: **16 November 2026** (cristianlrn) and **20 November 2026** (Alexis Maeder, second team member), with `prototype/test_switch.py`: off → the next 5 tickets went to the human queue with "agent off"; suggest-only → the 5 outputs marked suggest-only; on → the pipeline ran again. Both passed. Next test: 26 November.
 
 ## 7. Data
 - Training / demo data (`data/`): `tickets_synthetic.csv` (263 rows, generated from templates, labelled by category) and `demo_tickets.csv` (8 demo tickets for the inbox). Synthetic. The help centre (`kb/`, 12 articles) is synthetic too, written for the course.
@@ -51,4 +52,4 @@ A **workflow**: the path is fixed in advance — route, guard, retrieve, draft, 
 ## 9. What you would build next (3 lines max)
 1. A router with more and more varied phrasings plus an embedding rung; thresholds set on a separate calibration set.
 2. A maintained guard-topics list owned by the payroll specialists, and a retrieval floor calibrated on "no article" tickets.
-3. A fresh 200-case eval-set (Assignment 5) and the model-based drafter, graded by two people.
+3. The 100-case eval-set of Assignment 5 (50 fresh cases), then 200, and the model-based drafter, graded by two people.
