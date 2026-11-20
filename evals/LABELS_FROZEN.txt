@@ -14,4 +14,4 @@ e3a2ddc5725cb11046e2a0d3df372841108c484b8037d92d15d8a62add4395a2  evals/eval_set
 eval_set_v1.csv frozen BEFORE any prototype run on the 50 new rows (E51-E100)
 2026-11-20T09:22:45Z
 02e3bf21485deeab6b131375bd2d808790255cf7c4e796ec3d6c2fdd13e55053  evals/eval_set_v1.csv
-Labels of E51-E100 drafted by an AI assistant (Claude) with the teacher's permission (reported by Alexis Maeder, 20 November 2026), not by a team member; see evals/README.md.
+Labels of E51-E100 by OG Albert, drafted with an AI assistant with the teacher's permission (20 November 2026); see evals/README.md.

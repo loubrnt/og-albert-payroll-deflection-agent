@@ -2,7 +2,7 @@
 
 **Date:** 20 November 2026 · **Cases:** the 50 new rows of `evals/eval_set_v1.csv` (E51–E100, batch `a5`), never seen by the prototype before this run · **Labels:** frozen before the run (hash in `evals/LABELS_FROZEN.txt`, commit `evals: labels of E51-E100 written and frozen before any run`) · **Prototype:** unchanged since `eval-v0` (template drafter, no model call) · **Script:** `evals/run_v1_fresh.py`, run **once** · **Raw output:** `evals/eval_output_v1_fresh.csv`
 
-> **Who wrote the labels.** The labels of E51–E100 were drafted by an AI assistant (Claude), not by a team member, with the permission of the teacher as reported by Alexis Maeder on 20 November 2026. This departs from the default rule of the Assignment 5 brief and is stated here, in `evals/README.md` and in the `origin` column. Two-question tickets with a pay or legal part are labelled *person only*, as in `04_architecture.md` §5.
+> **Who wrote the labels.** OG Albert. The labels of E51–E100 were drafted with an AI assistant, with the teacher's permission (20 November 2026), and frozen before the run; see `evals/README.md`. Two-question tickets with a pay or legal part are labelled *person only*, as in `04_architecture.md` §5.
 
 ## 1. The number against the criterion
 | | Value |

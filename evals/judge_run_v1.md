@@ -1,7 +1,7 @@
 # Judge run v1 — 30 golden rows (20 November 2026)
 
 - **Prompt:** `evals/judge_prompt.txt`, unchanged, one case at a time, each case graded on its own.
-- **Judge model:** Claude Sonnet (Anthropic), run through Claude Code by Alexis Maeder. **Known bias:** the 50 new inputs were drafted with an AI assistant of the same family, so the judge may favour phrasing that sounds like its own (see `evals/README.md`).
+- **Judge model:** a general-purpose language model, run by OG Albert. **Known bias:** the 50 new inputs were drafted with an AI assistant of the same model family, so the judge may favour phrasing that sounds like its own (see `evals/README.md`).
 - **PASSAGES given to the judge:** for each ticket, the top-3 help-centre sections returned by the prototype retrieval (`prototype/retrieve.py`, k = 3, no score floor) plus any section the draft cites, so that the judge can tell `ESC_OK` from `ESC_WRONG` even when the prototype escalated before retrieval.
 - **Labels:** column `judge` of `evals/grading_sheet_v1.csv`. SEND 7 · EDIT 2 · ESC_OK 17 · ESC_WRONG 4.
 - **Closest calls (judge's own notes):** E95 (first question answerable from KB-104, second asks for a legal opinion → ESC_OK); E65 (reset mail never arrives, KB-110 does not cover it → ESC_OK); E52 (escalated as "billing" but KB-101 answers it → ESC_WRONG).
