@@ -15,7 +15,7 @@
 | Share "how do I…", already in the docs | 55 % | measured | P1 proposal — ticket tags |
 | Cost of one ticket handled by a human | €10 all-in | analogy | 60 × €45k ÷ 480k tickets = €5.6 of agent time + team leads, QA and tooling (class guide) |
 | Support time spent on "how do I…" | 55 % × 480k × €10 ≈ €2.6M / yr | derived | from the rows above |
-| Target deflection on the automatable share | ≥ 45 % | guess → S4 test | flip point of `02_sizing.xlsx` (≈ 43 %); first reading on 50 eval cases (Assignment 4), then a 200-case eval-set, synthetic or anonymised, by 22 Nov; the 7-day reopen rate is read in the pilot |
+| Target deflection on the automatable share | ≥ 45 % | guess → S4 test | flip point of `02_sizing.xlsx` (≈ 43 %); first reading on 50 eval cases (Assignment 4), then the 50 fresh cases of Assignment 5, then 200 fresh tickets, synthetic or anonymised; the 7-day reopen rate is read in the pilot |
 
 ## 2. Problem tree — from symptom to cause
 - **Symptom** (what people complain about): "Support takes two days to answer at month end"; agents say they burn out at payroll close.
@@ -52,7 +52,7 @@
 ## 6. What would have to be true?
 | # | Hypothesis | Measured / analogy / guess | How we will test it | Session |
 |---|---|---|---|---|
-| 1 | ≥ 45 % of automatable "how do I…" tickets are resolved without a human and not reopened within 7 days | guess | Run a 200-case eval-set (synthetic or anonymised, labelled before the run) through the prototype; two graders check the answer could be sent without editing, with its citation. The 7-day reopen rate can only be read on live traffic (pilot, then A/B) | S4–S5 prototype, S6 A/B |
+| 1 | ≥ 45 % of automatable "how do I…" tickets are resolved without a human and not reopened within 7 days | guess | Run the eval-set (50 fresh cases of Assignment 5, then 200 fresh tickets; synthetic or anonymised, labelled before the run) through the prototype; two graders check the answer could be sent without editing, with its citation. The 7-day reopen rate can only be read on live traffic (pilot, then A/B) | S4–S5 prototype, S6 A/B |
 | 2 | 68 % of "how do I…" tickets are answerable from the current help center | analogy (class worked example) | Manual audit of 200 tagged tickets against the help center | S3 / S4 |
 | 3 | The router sends 100 % of pay-figure questions to a human (no L1 leakage) | guess | Eval-set with an oversampled slice of money questions; target 0 leaks | S5 metrics |
 | 4 | Deflection does not drop during month-end / year-end (seasonal drift) | guess | Segment the A/B results by period (month-end vs mid-month) | S6 A/B |

@@ -12,7 +12,7 @@
 | 5. Channels — where it lives | In-app widget next to the payroll screen (Q1 pilot, 20 % of customers, opt-in); MVP: a test screen replaying tickets. | 03 brief §6 |
 | 6. Value — what it is worth per year (year 1, base case) | Base €206k net · expected value €301k (pessimistic −€202k, optimistic €994k) against a hurdle of €150k and do-nothing of €144k. | 02 |
 | 7. Cost structure — the cost lines | Tokens €3k · integration €120k one-off (€40k a year over 3 years) · evaluation €40k · supervision €75k (1.5 FTE) · monitoring €25k · re-evaluation €24k · expected cost of wrong answers €14k. | 02 |
-| 8. Key metric — the success criterion | ≥ 45 % of automatable "how do I…" tickets resolved without human touch and not reopened within 7 days, on 200 fresh tickets; zero answers that state an amount. | 03 brief §7 |
+| 8. Key metric — the success criterion | ≥ 45 % of automatable "how do I…" tickets get a draft two graders would send without editing, read first on the 50 fresh cases of Assignment 5, then on 200 fresh tickets (7-day reopen rate read in the Q1 pilot); zero answers that state an amount. | 03 brief §7 |
 | 9. Unfair advantage — data or know-how nobody else has | Our own help center (~1,500 articles), 12 months of tickets, and the payroll know-how to write the policy check; a vendor bot cannot know our jurisdiction rules. | 02 (build or buy) |
 
 ## The five AI blocks

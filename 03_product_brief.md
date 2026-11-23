@@ -39,7 +39,7 @@ Reach = tickets a month, from `02_sizing.xlsx`: 40,000 all tickets · 22,000 "ho
 | Policy checker (no amount, deadline or refund) | 22,000 | 3 | 100 % | 0.5 | 132,000 | **MUST** |
 | One-click escalate, with context | 40,000 | 2 | 100 % | 1 | 80,000 | **MUST** |
 | Routing with a confidence score | 40,000 | 2 | 80 % | 1 | 64,000 | SHOULD |
-| Eval-set of 200 tickets and the eval script | 14,960 | 2 | 100 % | 2 | 14,960 | **MUST** |
+| Eval-set (100 cases for Assignment 5, 200 as the production standard) and the eval script | 14,960 | 2 | 100 % | 2 | 14,960 | **MUST** |
 | Draft with help-center citations | 14,960 | 3 | 50 % | 3 | 7,480 | **MUST** |
 | Customer-facing widget in the app | 40,000 | 2 | 50 % | 6 | 6,667 | WON'T |
 | Auto-close resolved tickets | 14,960 | 0.5 | 80 % | 2 | 2,992 | COULD |
@@ -67,9 +67,9 @@ The prototype uses a **synthetic** help center of 12 articles and synthetic tick
 Production: the in-app widget, next to the payroll screen (Q1 pilot for 20 % of customers, opt-in). MVP: a test screen that shows, for each replayed ticket, the route, the draft, the citations, the policy line and three buttons (send · edit · hand over). Speed: under 5 seconds. Format: short answer, numbered steps, link to the article. Fallback: "talk to a person". Log visible to Support ops, QA and the DPO.
 
 ## 7. Success criterion — one sentence
-> By 22 November 2026, on **200 fresh tickets** that no one has used to tune the prototype, at least **45 %** of the automatable "how do I…" tickets are resolved without human touch and not reopened within 7 days — and **zero** answers state or confirm an amount.
+> On cases that no one has used to tune the prototype — first the **50 fresh cases** of `evals/eval_set_v1.csv` (Assignment 5), then **200 fresh tickets** — at least **45 %** of the automatable "how do I…" tickets get a draft that two graders would **send without editing**, and **zero** answers state or confirm an amount. The 7-day reopen rate cannot be read on replayed cases: it is read in the Q1 pilot.
 
-*The threshold is our flip point (≈ 43 % in `02_sizing.xlsx`, rounded up to 45 %). The 50 cases of Assignment 4 are a first reading, not the test.*
+*The threshold is our flip point (≈ 43 % in `02_sizing.xlsx`, rounded up to 45 %). The 50 cases of Assignment 4 are a first reading, not the test. Same wording in `spec.md`, `05_metrics.md` and `evals/README.md`.*
 
 ## 8. Risks and rollback trigger
 - Top risks: (1) a pay or legal ticket misrouted as how-to; (2) a stale article (law changed in January) quoted as current; (3) the novelty effect inflates the pilot; (4) agents see it as a replacement and stop sampling honestly.
