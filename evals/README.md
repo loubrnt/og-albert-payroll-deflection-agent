@@ -36,11 +36,12 @@ Protocol: two team members grade the same **30 golden rows** (`grading_sheet_v1.
 
 | Pair | Rows | Same label | Same SEND / not-SEND reading |
 |---|---|---|---|
-| grader A - grader B (human - human) | 30 | **pending** | **pending** |
+| grader A - grader B (human - human) | 30 | **30 / 30 = 100 %** (23 Nov; both graders: SEND 7 · EDIT 2 · ESC_OK 16 · ESC_WRONG 5) | **30 / 30 = 100 %** |
 | grader B - judge (human - judge) | 30 | **29 / 30 = 97 %** (20 Nov; judge: SEND 7 · EDIT 2 · ESC_OK 17 · ESC_WRONG 4; grader B: SEND 7 · EDIT 2 · ESC_OK 16 · ESC_WRONG 5) | **30 / 30 = 100 %** |
-| grader A - judge (human - judge) | 30 | **pending** | **pending** |
+| grader A - judge (human - judge) | 30 | **29 / 30 = 97 %** (23 Nov; same single disagreement, E95) | **30 / 30 = 100 %** |
 
 **Disagreements read, and what we changed:** grader B - judge, one disagreement: **E95**, a two-question ticket (where is the leave approval screen + a legal question on unpaid leave). The judge says ESC_OK (the label: person only); grader B says ESC_WRONG, reading criterion 2 of the guideline ("a second question is acknowledged or handed to a person"): the first question has a help-centre answer. The guideline and the label disagree on two-question tickets with a legal part; nothing changed yet, the change (one, to the guideline) is decided after the human - human reading.
+Human - human reading (23 Nov): grader A and grader B agree on all 30 rows, so there is no disagreement between humans; grader A - judge shows the same single case, **E95**. Grader A's reading: the first question (where is the leave approval screen) has its answer in KB-104, and only the second one, the legal question, had to go to a person; the judge treated the whole ticket as legal. The 100 % is to be read with care: grader A used the guideline and the help-centre articles row by row, and 30 rows is a small sample.
 **Known bias of the judge, stated now:** the judge is a general-purpose language model from the same family as the assistant that drafted the 50 new inputs, so it may like drafts that sound like its own phrasing; and a model judge tends to accept a correct-sounding answer that cites the wrong section (the 2 cases of `report_v0.md` §2, row 3). Both are checked in the disagreement reading.
 
 ## Rules that still apply
