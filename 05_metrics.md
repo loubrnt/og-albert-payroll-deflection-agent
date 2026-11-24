@@ -3,14 +3,14 @@
 > Session 5 deliverable. Five sections = the five moves of the session. Every number traces to `02_sizing.xlsx` (cell given as `Sheet!Cell`) or to `evals/report_v0.md` (section given as `§`). A number that is **derived** shows its calculation and is marked *derived*. Nothing here was measured on real customers: the product and business lines are hypotheses until the Q1 pilot.
 
 ## 1 · Place the number - the stack for our agent
-Our Session 4 number is the level-2 line: **27 %** of the answerable "how do I…" tickets get a draft citing the expected article and section (7 of 26, `report_v0.md` §1). It is an automatic proxy on 50 cases we have already seen; the two-grader number is still pending.
+Our Session 4 number is the level-2 line: **27 %** of the answerable "how do I…" tickets get a draft citing the expected article and section (7 of 26, `report_v0.md` §1). It is an automatic proxy on 50 cases we have already seen. Two graders then read the 30 golden rows on their own (23 November, `evals/README.md`): they gave `SEND` exactly where the proxy counts a hit, 30 rows out of 30, so the proxy stands as the graded reading: **27 %** on the 50 cases already seen and **29 %** (5 of 17) on the 50 fresh cases (`evals/report_v1_fresh.md` §1). Both are below the 45 % criterion.
 
 | Level | Question | Our metric | Value today (or "not yet") | Produced by | Owner | Clock |
 |---|---|---|---|---|---|---|
 | 5 Business | does it move the P&L? | Net annual value, year 1, against the hurdle of 150 k€ (`Inputs!D60`) | *derived* 17 k€ at the 27 % proxy (§4); sizing base 206 k€ at 50 % (`Decision!D17`) | model in `02_sizing.xlsx`, fed by live numbers in the Q1 pilot | Head of Support (agent) with Finance | months |
 | 4 Product | does the user adopt it and get the job done? | "how do I…" tickets resolved without human touch **and not reopened within 7 days**, share of the automatable ones | not yet (Q1 pilot); criterion 45 % (`report_v0.md` §1) | online measurement, ticketing system | Head of Support | weeks |
 | 3 Guardrails & responsible AI | does it stay inside the lines - for everyone? | Drafts on human-only tickets (must be 0) and answers that state an amount (must be 0) | **2** drafts on human-only tickets (E27, E50, `report_v0.md` §1); amount leaks 0 on 50 cases | eval-set + daily sampling | Head of Support; Legal for the guard list | days |
-| 2 AI system | does the workflow complete the task? | Drafts two graders would send without editing, share of the answerable tickets | **27 %** proxy (7/26); graded number pending (`report_v0.md` §1) | eval-set + two graders | eval owner | hours |
+| 2 AI system | does the workflow complete the task? | Drafts two graders would send without editing, share of the answerable tickets | **27 %** (7/26) on cases already seen, **29 %** (5/17) on the 50 fresh cases; the two graders agree with the proxy on the 30 golden rows (30/30, `evals/README.md`) | eval-set + two graders | eval owner | hours |
 | 1 Model | is the component right? | Router accuracy; retrieval hit@3 on answerable tickets | **70 %** (35/50); **31 %** (8/26) (`report_v0.md` §1) | offline eval-set, every commit | eval owner | seconds |
 
 ## 2 · Decide when to stop - the stop criterion
