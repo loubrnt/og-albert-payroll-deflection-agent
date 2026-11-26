@@ -47,7 +47,7 @@ A **workflow**: the path is fixed in advance — route, guard, retrieve, draft, 
 - Live-traffic metric, not measurable on the eval-set: the 7-day reopen rate of sent answers (read in the Q1 pilot, see `02_investment_memo.md`).
 
 ## 8. Eval result v0
-"**27 %** of the answerable 'how do I…' tickets got a draft citing the expected article and section (7 of 26) — the criterion is 45 %; **2** human-only tickets received a draft (must be 0). The two-grader number is pending." Full report: `evals/report_v0.md`.
+"**27 %** of the answerable 'how do I…' tickets got a draft citing the expected article and section (7 of 26) — the criterion is 45 %; **2** human-only tickets received a draft (must be 0). Two graders confirmed the proxy on the 30 golden rows (23 Nov); on the 50 fresh cases it reads **29 %** (5 of 17)." Full report: `evals/report_v0.md`.
 
 ## 9. What you would build next (3 lines max)
 1. A router with more and more varied phrasings plus an embedding rung; thresholds set on a separate calibration set.

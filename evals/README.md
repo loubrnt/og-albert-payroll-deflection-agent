@@ -6,7 +6,7 @@
 | `eval_set_v0.csv` | the 50 cases of Assignment 4, labels frozen on 9 November (`LABELS_FROZEN.txt`) | done; **demo data** since the first run (`report_v0.md` §4) |
 | `eval_set_v1.csv` | **100 cases** = the 50 of v0 + 50 new (`E51` to `E100`, batch `a5`) | inputs of the 50 new rows written; **labels written and frozen on 20 November 2026, drafted with an AI assistant, teacher's permission** (see below) |
 | `judge_prompt.txt` | the judge prompt, built from the guideline below | written; **run on the 30 golden rows on 20 November 2026** (`judge_run_v1.md`) |
-| `grading_sheet_v1.csv` | the 30 golden rows with the prototype's output, for the two graders and the judge | built; column `judge` filled (20 Nov); **columns `grader_a` and `grader_b` still empty** |
+| `grading_sheet_v1.csv` | the 30 golden rows with the prototype's output, for the two graders and the judge | built; column `judge` filled (20 Nov); columns `grader_b` (20 Nov) and `grader_a` (23 Nov) filled; agreement rates below |
 | `run_v1_fresh.py`, `eval_output_v1_fresh.csv`, `report_v1_fresh.md` | the prototype run once on the 50 new rows after their labels were frozen | done (20 Nov): proxy 29 % (5/17), 4 drafts where none is allowed |
 | `judge_run_v1.md` | the judge's five-line answer for each of the 30 rows, the model used, the passages given | done (20 Nov) |
 | `make_grading_sheet.py`, `agreement.py` | build the sheet; compute the agreement rates | ready |
@@ -38,6 +38,10 @@ Protocol: two team members grade the same **30 golden rows** (`grading_sheet_v1.
 |---|---|---|---|
 | grader A - grader B (human - human) | 30 | **30 / 30 = 100 %** (23 Nov; both graders: SEND 7 · EDIT 2 · ESC_OK 16 · ESC_WRONG 5) | **30 / 30 = 100 %** |
 | grader B - judge (human - judge) | 30 | **29 / 30 = 97 %** (20 Nov; judge: SEND 7 · EDIT 2 · ESC_OK 17 · ESC_WRONG 4; grader B: SEND 7 · EDIT 2 · ESC_OK 16 · ESC_WRONG 5) | **30 / 30 = 100 %** |
+
+**What the grading tells us (checked 24 Nov with `agreement.py` and the run outputs):**
+- **Graders and proxy agree on all 30 rows.** Every `SEND` is a draft that cites the expected article and section and passes the policy check, and every such draft is a `SEND`. On our template drafter the automatic proxy is therefore a faithful reading of "sendable without editing": **27 %** (7/26) on the v0 cases, **29 %** (5/17) on the 50 fresh cases (`report_v1_fresh.md`). The 30 golden rows alone give 7 `SEND` out of 12 answerable rows, but they are a fixed sample of positions, too small to replace the full-set number.
+- **The one disagreement with the judge, E95, is also a disagreement with our own label.** The ticket asks where the leave approval screen is *and* whether unpaid leave without consent is legal. The label says person only (the two-question rule of `04_architecture.md` §5); both graders wrote `ESC_WRONG` (the help centre answers the first question), the judge wrote `ESC_OK`. Labels stay frozen; the team should decide which reading the guideline keeps before the next eval-set.
 | grader A - judge (human - judge) | 30 | **29 / 30 = 97 %** (23 Nov; same single disagreement, E95) | **30 / 30 = 100 %** |
 
 **Disagreements read, and what we changed:** grader B - judge, one disagreement: **E95**, a two-question ticket (where is the leave approval screen + a legal question on unpaid leave). The judge says ESC_OK (the label: person only); grader B says ESC_WRONG, reading criterion 2 of the guideline ("a second question is acknowledged or handed to a person"): the first question has a help-centre answer. The guideline and the label disagree on two-question tickets with a legal part; nothing changed yet, the change (one, to the guideline) is decided after the human - human reading.

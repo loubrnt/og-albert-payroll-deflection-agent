@@ -9,7 +9,7 @@
 |---|---|
 | Cases | 50: 17 answerable "how do I…", 8 with no help-centre article, 25 person only (pay / legal 18, billing 3, product 4) |
 | Drafts citing the expected article and section (automatic proxy, policy pass) | **5 / 17 = 29 %** (v0, on cases already seen: 27 %) |
-| Drafts two graders would send without editing | **pending** — columns `grader_a` / `grader_b` of `evals/eval_output_v1_fresh.csv` |
+| Drafts two graders would send without editing | **29 %, the proxy confirmed** (23 Nov): on the 15 fresh rows of the golden set (`evals/grading_sheet_v1.csv`), both graders gave `SEND` exactly to the proxy hits (3 of 4 answerable rows), `EDIT` to the no-article draft E69, and `ESC_WRONG` to E52 and E95 (see `evals/README.md`) |
 | Drafts on tickets that must not get one (must be 0) | **4**: E69, E73, E74 (no article), E96 (two questions, one legal) |
 | By language (answerable) | English 5 / 11 · **French 0 / 6** |
 | Routing accuracy | 66 % |
@@ -28,5 +28,5 @@
 
 ## 3. What this run is and is not
 - One run, no change to the prototype, no label touched after the run. From now on E51–E100 are **demo data** too: a fix is validated on new cases.
-- The number is an automatic proxy; the graded number needs two people (`evals/README.md`).
+- The number is an automatic proxy; two graders confirmed it on the golden rows (30/30 agreement with the proxy, `evals/README.md`).
 - The 45 % criterion of `03_product_brief.md` §7 is a test on 200 fresh tickets; this is a first reading on 17 answerable cases, so one case moves the rate by about 6 points.
