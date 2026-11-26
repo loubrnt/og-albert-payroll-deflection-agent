@@ -24,7 +24,18 @@ Inside → My courses → Data & AI Product → Assignments :
 - **Assignment 1** : `README.md`, `01_problem_statement.md`, `governance.md`
 - **Assignment 2** : `02_sizing.xlsx`, `02_investment_memo.md`, `governance.md`
 
-## À venir
-- **Assignment 3** (MVP brief & design loop) : énoncé daté du 8 nov., pas encore fait, pas d'espace de rendu sur Inside.
-- **Assignment 4** (prototype & architecture) : **15 nov. 23:59, sur ce dépôt** — prototype (4 commits, un auteur chacun), `evals/report_v0.md`, `04_architecture.md`, `spec.md` v2, eval-set à 50 cas, section S4 de `governance.md`.
-- À faire : mettre le lien de ce dépôt dans la ligne OG Albert de la feuille d'inscription, et que chacun remplisse sa ligne (onglet Students) avec son handle GitHub.
+## Assignments 3 à 7 — faits
+- **A3** (MVP brief & design loop) : `03_product_brief.md`, `03_ai_lean_canvas.md`, `03_user_research.md` (guide prêt, **conversations non tenues**), `03_prototype_link.md`, `spec.md` squelette.
+- **A4** (prototype & architecture, 15 nov.) : `/prototype` (4 étapes, un auteur par commit), `evals/report_v0.md` (27 %), `04_architecture.md`, `spec.md` v2, eval-set de 50 cas, tag `eval-v0`.
+- **A5** (métriques, 22 nov.) : `05_metrics.md`, eval-set v1 de 100 cas, grille, juge, deux correcteurs (30/30), run sur les 50 cas neufs (29 %).
+- **A6-7** (expériences & opération) : `06_07_experiments_operations.md`, interrupteur réel, rollback testé les 16, 20 et 26 nov.
+
+## Assignment 8 — rendu final (jeudi 26 nov., 23:59)
+- `08_launch_memo.md` (décision : **pas de lancement client**, `v1.0` en suggest-only), `spec.md` v3, `03_product_brief.md` v1.1, ligne Session 8 de `governance.md`.
+- **Tag `v1.0`** sur `main` avant le premier oral. **Plus aucun commit après le début du premier oral.**
+- Fusionner les PR en **merge commit** (pas en squash) : un squash réécrit les commits sous un seul auteur et fait perdre les commits signés de chacun.
+
+## Oral (vendredi 27 nov.)
+- 30 min d'écrit seul, sans IA (brief bancal à critiquer, concept à expliquer, rétro-ingénierie d'un produit).
+- Pitch en 10 temps (8 min + 4 min de questions), **tout le monde parle** ; question individuelle sur un commit signé.
+- Règle : chacun doit avoir signé des commits dans **au moins 4 fichiers numérotés** — à vérifier sur `main` après les fusions : `git log main --author=<handle> --name-only --format= | grep -E '^0[0-9]_' | sort -u`.
