@@ -47,7 +47,7 @@ if page == "Inbox":
                 st.markdown("**Suggested reply — review before sending**")
                 st.write(text)
                 st.caption("Sources: " + " · ".join(f"{p['article']} · {p['section']}" for p in passages))
-                st.caption(f"Policy check: {status} · AI answer — you approve before sending (L2 in this prototype; L3 with 10 % sampling in production)")
+                st.caption(f"Policy check: {status} · AI answer — you approve before sending (L2 in this prototype; L3 with sampling in production: 10 % in the pilot, 5 % at steady state)")
                 b1, b2, b3 = st.columns(3)
                 b1.button("✅ Send", type="primary", disabled=(switch.status() == "suggest_only")); b2.button("✏️ Edit"); b3.button("↗ Hand over to a person")
         else:
