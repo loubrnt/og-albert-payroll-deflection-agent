@@ -34,6 +34,8 @@
 - **Kill** if the treated half is below **43 %** (flip point), or the 7-day reopen rate is above the untreated half's for two weeks in a row (`02_investment_memo.md` §3).
 - **Stop early only if** the harm threshold of `governance.md` (Session 5) is reached: one amount leak in the sample, or the reopen rate above the human baseline for two weeks, or a wrong-answer rate above 4 % in a segment - never on a good number, and never to look.
 
+**The rule, applied before the first unit (26 November 2026):** the experiment has **not started**. The offline reading that comes before it — 29 % sendable drafts on the 50 fresh cases, 4 drafts on person-only tickets (`evals/report_v1_fresh.md`) — is under the *kill* line (43 %) and breaks the floor, so the shadow week of §1 is not opened either. We did not move the line after seeing the number; the next attempt starts again from §1 with a new batch of cases (`08_launch_memo.md` §5).
+
 ## §3 Watch the four layers - monitoring and drift
 
 | Layer | Metric (from `05_metrics.md`) | Threshold that pages someone | Clock | Owner | Tool - startup | Tool - large company |

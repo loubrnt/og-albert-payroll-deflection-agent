@@ -47,11 +47,13 @@ if page == "Inbox":
                 st.markdown("**Suggested reply — review before sending**")
                 st.write(text)
                 st.caption("Sources: " + " · ".join(f"{p['article']} · {p['section']}" for p in passages))
-                st.caption(f"Policy check: {status} · AI answer — you approve before sending (L2 in this prototype; L3 with 10 % sampling in production)")
+                st.caption(f"Policy check: {status} · AI answer — you approve before sending (L2 in this prototype; L3 with sampling in production: 10 % in the pilot, 5 % at steady state)")
                 b1, b2, b3 = st.columns(3)
                 b1.button("✅ Send", type="primary", disabled=(switch.status() == "suggest_only")); b2.button("✏️ Edit"); b3.button("↗ Hand over to a person")
         else:
-            st.warning("Human only — no draft. Handed over with the reason and the context.")
+            # A low-confidence how-to ticket is not a "human only" topic: say which kind of hand-over it is.
+            kind = "Human only" if reason.startswith(("guard word", "human-only")) else "Handed over"
+            st.warning(f"{kind} — no draft ({reason}). Handed over to a person with the reason and the context.")
         st.button("🙋 Talk to a person (always visible)")
 else:
     st.title("Eval — evals/eval_set_v0.csv")

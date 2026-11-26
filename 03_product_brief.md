@@ -1,6 +1,6 @@
 # 03 — Product brief · Tier-1 deflection agent · v1
 
-**Team:** OG Albert · **Starting point:** P1 · Tier-1 deflection, HR & payroll SaaS · **Version:** v1 — 9 November 2026 (v2 waits for the user conversations, see §9–10)
+**Team:** OG Albert · **Starting point:** P1 · Tier-1 deflection, HR & payroll SaaS · **Version:** v1 — 9 November 2026 · **v1.1 — 26 November 2026, the version tagged `v1.0`:** §7 and §8 carry what the evals measured; §9–10 still wait for the user conversations, which have not been held
 
 > Same base case as `02_sizing.xlsx` and `02_investment_memo.md`. Source type in brackets: **measured** · **analogy** · **guess**.
 
@@ -18,7 +18,7 @@ Minutes and error rates are **guesses** until a time-and-motion sample of 30 tic
 | 1 | Read the ticket | agent | 1.0 (guess) | 2 % (guess) | misread → wrong answer, ~€8 | automate (fails none: read-only) | L4 | 0 | share of tickets parsed without error |
 | 2 | Decide whether it is a "how do I…" and may be answered | agent | 0.5 (guess) | 5 % (guess) | a legal-deadline ticket treated as how-to ≈ €300; a pay-figure ticket ≈ €500 | automate **with a hard guard** (fails "low tolerance for error" on legal and pay topics → rule + escalate) | L4 above a threshold, otherwise person | 0 | routing accuracy; recall on human-only tickets |
 | 3 | Search the help center | agent | 4.0 (guess) | 10 % wrong article (guess) | ~€8 (customer asks again) | automate | L3 | 0 | retrieval hit@3 |
-| 4 | Draft the reply | agent | 3.0 (guess) | 4 % (analogy, class sheet) | ~€8 | automate on "how do I…", keep human elsewhere | L3 (5 % sampled) | 0.2 (sampling) | answers two graders would send without editing |
+| 4 | Draft the reply | agent | 3.0 (guess) | 4 % (analogy, class sheet) | ~€8 | automate on "how do I…", keep human elsewhere | L3 (10 % sampled in the pilot, 5 % at steady state) | 0.2 (sampling) | answers two graders would send without editing |
 | 5 | Check the reply holds no amount, deadline or refund | agent | 1.0 (guess) | 3 % (guess) | ~€300–500 + contract risk | automate as a rule that can only block | L4 | 0 | drafts on human-only tickets (must be 0) |
 | 6 | Send and log | agent | 1.5 (guess) | 1 % (guess) | ~€2 | automate | L3 | 0 | 7-day reopen rate |
 | 7 | *(new)* Escalate with context | — | — | — | a customer waiting | keep human; pre-written context saves ~2 min | person only | 9 (instead of 11) | time to first human answer |
@@ -69,10 +69,13 @@ Production: the in-app widget, next to the payroll screen (Q1 pilot for 20 % of 
 ## 7. Success criterion — one sentence
 > On cases that no one has used to tune the prototype — first the **50 fresh cases** of `evals/eval_set_v1.csv` (Assignment 5), then **200 fresh tickets** — at least **45 %** of the automatable "how do I…" tickets get a draft that two graders would **send without editing**, and **zero** answers state or confirm an amount. The 7-day reopen rate cannot be read on replayed cases: it is read in the Q1 pilot.
 
+**Measured (v1.1):** 27 % on the 50 cases already seen and **29 %** (5 of 17) on the 50 fresh cases — English 5 / 11, French 0 / 6 — confirmed by two graders on the 30 golden rows; **4** drafts on person-only fresh tickets; 0 amounts stated. The criterion is **not met**; decision in `08_launch_memo.md`.
+
 *The threshold is our flip point (≈ 43 % in `02_sizing.xlsx`, rounded up to 45 %). The 50 cases of Assignment 4 are a first reading, not the test. Same wording in `spec.md`, `05_metrics.md` and `evals/README.md`.*
 
 ## 8. Risks and rollback trigger
 - Top risks: (1) a pay or legal ticket misrouted as how-to; (2) a stale article (law changed in January) quoted as current; (3) the novelty effect inflates the pilot; (4) agents see it as a replacement and stop sampling honestly.
+- **What the evals showed (v1.1):** risk (1) did happen on fresh cases — a two-question ticket with a legal part got a draft (E96), and three tickets with no article got one (E69, E73, E74); a risk we had not listed showed up too: **French tickets are served worse** (0 / 6), because the help centre is in English. Both are lines of `spec.md` v3.
 - **Rollback trigger (one line):** go back to the previous adoption step if the 7-day reopen rate exceeds the human baseline for two weeks, or if one answer stating an amount is found in sampling.
 
 ---

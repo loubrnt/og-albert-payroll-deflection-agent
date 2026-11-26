@@ -26,14 +26,14 @@
 | `governance.md` | created for Assignment 1, one line added every session | S1 to S8 done |
 | `02_sizing.xlsx` | S2 — Assignment 2 | done |
 | `02_investment_memo.md` | S2 — Assignment 2 | done — CONDITIONAL GO |
-| `03_product_brief.md` | S3 — Assignment 3 | v1 done, v2 waits for the user conversations |
+| `03_product_brief.md` | S3 — Assignment 3 | v1.1 (26 Nov): eval results in §7–§8; v2 still waits for the user conversations |
 | `03_ai_lean_canvas.md` | S3 — Assignment 3 | done |
 | `03_user_research.md` | S3 — Assignment 3 | guide ready, **conversations to hold** |
-| `03_prototype_link.md` | S3 — Assignment 3 | prompt and link, to share before the user tests |
+| `03_prototype_link.md` | S3 — Assignment 3 | prompt, link and a screenshot of the inbox (`prototype/screenshot_inbox_v1.0.png`) |
 | `04_architecture.md` | S4 - Assignment 4 | four steps, a gate between them, a person where the money or the customer is; figures from the first eval run |
 | `05_metrics.md` | S5 - Assignment 5 | five sections written; numbers traced to `02_sizing.xlsx` and `evals/report_v0.md`; judge run on the 30 golden rows on 20 November (`evals/judge_run_v1.md`); labels of the 50 new cases (E51-E100) frozen and first run on them (`evals/report_v1_fresh.md`: 29 % proxy, 4 drafts where none is allowed); two human graders on the 30 golden rows (23 November): 100 % agreement between them, 97 % with the judge, and the graders confirm the proxy (`evals/README.md`) |
 | `06_07_experiments_operations.md` | S6 + S7 - Assignment 6-7 | five sections written; rollback tested on the prototype on 16, 20 and 26 November (`prototype/test_switch.py`, three team members), all passed |
 | `08_launch_memo.md` | S8 | done (26 Nov): **NO-GO for a customer-facing launch**, `v1.0` ships as an evaluated prototype in suggest-only (29 % vs 45 %, 4 drafts on person-only tickets); what would re-open the decision; next steps with owners and dates; who did what |
 | `spec.md` | S3 skeleton → S4 v2 → S8 v3 | v3 done (26 Nov), after the fresh run and the two graders: every fresh miss is a line |
 | `/evals`, `/kb` | from S3, S4, S5 | v0: 50 cases (labels frozen before the run, to be reviewed by the team), the run output and `evals/report_v0.md` (27 % proxy against the 45 % criterion, tag `eval-v0`, proxy confirmed by two graders on 23 November); v1: 100 cases, guideline, judge prompt and judge run, grading sheet; 12 synthetic help-center articles |
-| `/prototype` | from S4 | four steps (router, guard + policy check, retrieve + draft, evals + surface); run once, template drafter |
+| `/prototype` | from S4 | four steps (router, guard + policy check, retrieve + draft, evals + surface); run once, template drafter; override switch and rollback test (`switch.py`, `test_switch.py`); see `prototype/README.md` to run it |

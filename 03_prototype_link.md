@@ -15,8 +15,12 @@ Paragraph 2 — what is on the screen (panels, buttons, the one thing it must ne
 Left: a list of 8 fake tickets with a route tag (HOW-DO-I, PAY/LEGAL, BILLING, PRODUCT) and a "waiting since" time. Right: the selected ticket, a draft answer in numbered steps with citations like [KB-101 · Export], a policy line ("Checked: no amount, no deadline, no refund"), and three buttons: Send, Edit, Hand over to a person. A "Talk to a person" button is always visible. The agent must never show a draft containing a pay figure, a contribution rate or a legal deadline: those tickets show "Human only — no draft" and the reason.
 
 Paragraph 3 — the rules (routing, what is "human only", the trust level):
-Only HOW-DO-I tickets get a draft, and every draft carries the caption "AI answer — you approve before sending (L2 in this prototype; L3 with 5 % sampling in production)". PAY/LEGAL and BILLING tickets are human only. Low-confidence tickets go to "Hand over" with the retrieved passages attached. Fake data only.
+Only HOW-DO-I tickets get a draft, and every draft carries the caption "AI answer — you approve before sending (L2 in this prototype; L3 with sampling in production: 10 % in the pilot, 5 % at steady state)". PAY/LEGAL and BILLING tickets are human only. Low-confidence tickets go to "Hand over" with the retrieved passages attached. Fake data only.
 ```
 
-- **Screenshot:** to add in the repo (`prototype/screenshot_v0.1.png`) and link here.
+- **Screenshot:** the clickable artifact above is private; the screen we actually built and evaluated is the Streamlit inbox (`prototype/app.py`), captured on 26 November 2026 for `v1.0`:
+
+  ![Inbox of the prototype: ticket D02 routed how_do_i (0.92), a cited draft, the policy line, Send / Edit / Hand over, and "Talk to a person"](prototype/screenshot_inbox_v1.0.png)
+
+  Demo ticket D02, run live: routed `how_do_i` (0.92), draft with its citation `[KB-105 · Check the bank details first]`, policy check pass, the L2 caption, three buttons and "Talk to a person". The draft also shows the limit of the template drafter: it answers with the first retrieved section, which is about the bank-details check before the SEPA file, not exactly the IBAN update asked — a "wrong section" case of `evals/report_v0.md` §2.
 - **Note on the surface:** in production the agent answers the customer in the in-app widget (see `03_product_brief.md` §6). This prototype shows the agent-inbox view, which is where the answer quality is checked before anything reaches a customer.

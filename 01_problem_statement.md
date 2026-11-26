@@ -58,6 +58,15 @@
 | 4 | Deflection does not drop during month-end / year-end (seasonal drift) | guess | Segment the A/B results by period (month-end vs mid-month) | S6 A/B |
 | 5 | Deflected customers are not less satisfied (CSAT not lower than human answers) | guess | Counter-metric in the A/B test | S5 / S6 |
 
+**Where each hypothesis stands at `v1.0` (26 November 2026):**
+| # | Status | Evidence |
+|---|---|---|
+| 1 | **Not supported so far** — 27 % on the 50 cases already seen, **29 %** on 50 fresh cases, against 45 %; two graders confirm the automatic reading | `evals/report_v0.md`, `evals/report_v1_fresh.md`, `08_launch_memo.md` |
+| 2 | **Not tested** — the audit of tagged tickets needs real (anonymised) tickets we do not have; on the synthetic set, 8 of the 50 fresh cases have no article | `evals/eval_set_v1.csv` |
+| 3 | **Not met** — no amount was ever stated, but 4 person-only tickets got a draft on the fresh cases (E69, E73, E74 with no article; E96 with a legal second question) | `evals/report_v1_fresh.md` §2, `spec.md` v3 |
+| 4 | Not testable before live traffic | A/B, `06_07_experiments_operations.md` §2 |
+| 5 | Not testable before live traffic | A/B counter-metric, `05_metrics.md` §3 |
+
 ## 7. Do-nothing baseline
 In 12 months without the agent, the problem does not stay still: volume grows with the customer base (+10 %/year guess), the content team keeps improving articles and agents get faster with macros — we price this at **≈ 3 % efficiency gain a year (≈ €144k)**, not zero. The month-end peak and agent burnout remain, and the next-best use of the same team would be a **help-center search revamp + in-app month-end checklists** (no GenAI), worth ≈ €150k a year: that is the hurdle our agent has to beat in `02_sizing.xlsx`.
 
@@ -94,7 +103,7 @@ In 12 months without the agent, the problem does not stay still: volume grows wi
 | 3. Search the help center | 4.0 | **Pain point:** repetitive | Retrieval of the right passages |
 | 4. Draft the reply | 3.0 | **Pain point:** copy-paste and rewriting | Cited draft |
 | 5. Check the reply | 1.0 | Careful | A rule blocks any amount, deadline or refund |
-| 6. Send and log | 1.5 | Routine | Her work moves to sampling about 5 % of answers and handling escalations with context |
+| 6. Send and log | 1.5 | Routine | Her work moves to sampling answers (10 % in the pilot, 5 % at steady state, as priced in `02_sizing.xlsx` `Inputs!G52`) and handling escalations with context |
 
 ## 9. Stakeholder map
 > **Status: provisional — judgement,** using the Session 1 power / interest grid. Owners match `governance.md`.
