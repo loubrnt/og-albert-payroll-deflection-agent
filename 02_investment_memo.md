@@ -1,6 +1,6 @@
 # 02 — Investment memo (one page)
 
-**Recommendation:** **CONDITIONAL GO** on **deflection ≥ 45 % on "how do I…" tickets, measured by 22 Nov 2026 on a 200-case eval-set, synthetic or anonymised (answers two graders would send without editing), with 0 pay-figure leaks; the 7-day reopen rate is then read in the Q1 pilot.**
+**Recommendation:** **CONDITIONAL GO** on **deflection ≥ 45 % on "how do I…" tickets, measured first on the 50 fresh cases of Assignment 5, then on 200 fresh tickets, synthetic or anonymised (answers two graders would send without editing), with 0 pay-figure leaks; the 7-day reopen rate is then read in the Q1 pilot.**
 
 > Line one is the decision. Everything below is evidence for that line. Same base case as `02_sizing.xlsx`.
 
