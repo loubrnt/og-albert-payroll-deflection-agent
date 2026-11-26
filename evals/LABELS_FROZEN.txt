@@ -15,3 +15,14 @@ eval_set_v1.csv frozen BEFORE any prototype run on the 50 new rows (E51-E100)
 2026-11-20T09:22:45Z
 02e3bf21485deeab6b131375bd2d808790255cf7c4e796ec3d6c2fdd13e55053  evals/eval_set_v1.csv
 Labels of E51-E100 by OG Albert, drafted with an AI assistant with the teacher's permission (20 November 2026); see evals/README.md.
+
+Check of 26 November 2026 (Mathis Meimoun), before the tag v1.0:
+the hash recorded above (02e3bf21…) matches neither the file as first committed nor the current one.
+- file as committed with the frozen labels (3ab827c, 20 Nov):
+126474d4485be1bd8e8963c681b2a5588fba8da590176ca9e1d6ade9e9abf055  evals/eval_set_v1.csv
+- current file, after commit 13c1c8e (20 Nov, "tool names removed"):
+8933f778bf14c08c0984125147e8e12851f04c605f37335bd9b0f216be14ee10  evals/eval_set_v1.csv
+Column-by-column comparison of the two files: same 100 ids in the same order; only the column `origin` differs
+(50 rows, wording of who drafted the labels). All expected_* columns, the evidence, the hand-over flags,
+the segments and the inputs are identical: no label was touched after the freeze, and the run of
+evals/report_v1_fresh.md read the same labels.
