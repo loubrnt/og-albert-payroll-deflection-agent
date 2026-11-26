@@ -6,3 +6,7 @@
 {"at": "2026-11-20T08:36:04+00:00", "state": "suggest_only", "who": "Alexis Maeder (AlexisMaeder, laptop)", "why": "rollback test: suggest-only position"}
 {"at": "2026-11-20T08:36:04+00:00", "state": "on", "who": "Alexis Maeder (AlexisMaeder, laptop)", "why": "rollback test: back on"}
 {"at": "2026-11-20T08:36:04+00:00", "state": "on", "who": "Alexis Maeder (AlexisMaeder, laptop)", "why": "rollback test: state restored"}
+{"at": "2026-11-26T13:55:47+00:00", "state": "off", "who": "Mathis Meimoun (Mathmnms, laptop)", "why": "rollback test: switch off"}
+{"at": "2026-11-26T13:55:47+00:00", "state": "suggest_only", "who": "Mathis Meimoun (Mathmnms, laptop)", "why": "rollback test: suggest-only position"}
+{"at": "2026-11-26T13:56:06+00:00", "state": "on", "who": "Mathis Meimoun (Mathmnms, laptop)", "why": "rollback test: back on"}
+{"at": "2026-11-26T13:56:06+00:00", "state": "on", "who": "Mathis Meimoun (Mathmnms, laptop)", "why": "rollback test: state restored"}

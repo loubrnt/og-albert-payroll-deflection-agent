@@ -38,7 +38,7 @@ A **workflow**: the path is fixed in advance — route, guard, retrieve, draft, 
 - Who can switch it off: the Head of Customer Support (and their delegate) by day, the on-call engineer by night (`06_07_experiments_operations.md` §4-§5).
 - Positions: **on** (the pipeline runs) · **suggest-only** (drafts are shown to the agent, only a human sends) · **off** (every ticket goes to the human queue with the reason "agent off"; no router, no draft).
 - Scope: in the prototype the switch acts on **everyone** (`prototype/switch.py`, state in `data/switch.json`, read on every ticket, every change logged in `data/switch_log.jsonl`). The finer scopes of the design (one category, one customer) are not built yet.
-- Tested on: **16 November 2026** (cristianlrn) and **20 November 2026** (Alexis Maeder, second team member), with `prototype/test_switch.py`: off → the next 5 tickets went to the human queue with "agent off"; suggest-only → the 5 outputs marked suggest-only; on → the pipeline ran again. Both passed. Next test: 26 November.
+- Tested on: **16 November 2026** (cristianlrn) and **20 November 2026** (Alexis Maeder, second team member), with `prototype/test_switch.py`: off → the next 5 tickets went to the human queue with "agent off"; suggest-only → the 5 outputs marked suggest-only; on → the pipeline ran again. Both passed. Run a third time on **26 November 2026** (Mathis Meimoun, third team member, before the tag `v1.0`): passed. Next test: at the first live step of the pilot.
 
 ## 7. Data
 - Training / demo data (`data/`): `tickets_synthetic.csv` (263 rows, generated from templates, labelled by category) and `demo_tickets.csv` (8 demo tickets for the inbox). Synthetic. The help centre (`kb/`, 12 articles) is synthetic too, written for the course.
