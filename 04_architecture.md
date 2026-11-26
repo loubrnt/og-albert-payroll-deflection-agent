@@ -19,9 +19,9 @@ ticket ──▶ [1 router] ──▶ [2 guard] ──▶ [3 retrieve + draft] �
 ## 3. Component table
 | # | Component | Rung (1 rules · 2 classical ML · 3 pretrained model · 4 custom) | Pattern | Trust level (L1–L4) | Checkpoint ⊘ | Metric observed |
 |---|---|---|---|---|---|---|
-| 1 | Router (`router.py`) | 2 | routing (classify, then dispatch) | L4 above threshold, else person | abstention (below 0.70) | routing accuracy 70 % |
-| 2 | Guard (`route_rule.py`) | 1 | routing gate | L4 (can only escalate) | abstention | drafts on human-only: 2 (must be 0) |
-| 3 | Retrieve + draft (`retrieve.py`, `draft.py`) | 2 (retrieval) + 3 (draft; template in v0, model optional) | prompt chaining: retrieve → draft | L3 production · L2 prototype | approval (prototype) · sampling 10 % (pilot) → 5 % (steady state, the rate priced in `Inputs!G52`) | hit@3 31 %; cited expected section 27 % |
+| 1 | Router (`router.py`) | 2 | routing (classify, then dispatch) | L4 above threshold, else person | abstention (below 0.70) | routing accuracy 70 % (v0) · 66 % (fresh cases) |
+| 2 | Guard (`route_rule.py`) | 1 | routing gate | L4 (can only escalate) | abstention | drafts on human-only: 2 (v0) · 4 (fresh cases; must be 0) |
+| 3 | Retrieve + draft (`retrieve.py`, `draft.py`) | 2 (retrieval) + 3 (draft; template in v0, model optional) | prompt chaining: retrieve → draft | L3 production · L2 prototype | approval (prototype) · sampling 10 % (pilot) → 5 % (steady state, the rate priced in `Inputs!G52`) | hit@3 31 %, cited expected section 27 % (v0) · 29 % and 29 % (fresh cases) |
 | 4 | Policy check (`policy.py`) | 1 | gate between draft and send | L4 (can only block) | abstention | policy blocks: 0 |
 
 ## 4. Workflow or agent?
@@ -50,6 +50,6 @@ A **workflow**: the path is fixed in advance — route, guard, retrieve, draft, 
 "**27 %** of the answerable 'how do I…' tickets got a draft citing the expected article and section (7 of 26) — the criterion is 45 %; **2** human-only tickets received a draft (must be 0). Two graders confirmed the proxy on the 30 golden rows (23 Nov); on the 50 fresh cases it reads **29 %** (5 of 17)." Full report: `evals/report_v0.md`.
 
 ## 9. What you would build next (3 lines max)
-1. A router with more and more varied phrasings plus an embedding rung; thresholds set on a separate calibration set.
-2. A maintained guard-topics list owned by the payroll specialists, and a retrieval floor calibrated on "no article" tickets.
-3. The 100-case eval-set of Assignment 5 (50 fresh cases), then 200, and the model-based drafter, graded by two people.
+1. A router with more and more varied phrasings plus an embedding rung; thresholds set on a separate calibration set (9 of the 12 fresh misses).
+2. A retrieval floor calibrated on "no article" tickets and a guard that reads every sentence, its topic list owned by the payroll specialists (E69, E73, E74, E96).
+3. French retrieval (0 / 6 in French), then a new batch of cases labelled before the run, then 200 in shadow mode (`08_launch_memo.md` §6).
