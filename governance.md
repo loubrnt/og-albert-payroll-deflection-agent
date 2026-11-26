@@ -8,7 +8,7 @@
 |---|---|---|---|
 | 1 | **EU AI Act:** which risk tier is our agent in, and why? | **Limited risk — transparency obligation (art. 50):** it is a chatbot talking to people, so the widget says "AI assistant" on every answer and offers "talk to a person". It is not high-risk: it does not decide on employment, pay, promotion or termination (Annex III §4) — answers about pay figures are excluded by design. If scope ever moved to individual pay decisions, it would become high-risk. | Legal counsel / DPO — confirm the Annex III reading |
 | 2 | **Data:** whose data does it use, and on what legal basis? | The help center (ours) and the customer's question. Customers' tickets are processed as **processor** under the B2B contract and DPA (GDPR art. 28); our own use of past tickets to build the eval-set = legitimate interest (art. 6(1)(f)), pseudonymised. Employee payroll data is **not** sent to the model. EU hosting; the LLM provider must not train on our data. | DPO; check the DPA allows LLM sub-processors |
-| 3 | **Accountability:** who is accountable when it is wrong — and where is the human? | The **Head of Support** owns the agent's answers (product owner). Humans: reviewers sample ~5 % of answers, read every escalation, and any customer can ask for a person in one click. | Head of Support (to name) |
+| 3 | **Accountability:** who is accountable when it is wrong — and where is the human? | The **Head of Support** owns the agent's answers (product owner). Humans: reviewers sample 10 % of answers in the pilot and ~5 % at steady state (the rate priced in `02_sizing.xlsx`), read every escalation, and any customer can ask for a person in one click. | Head of Support (to name) |
 | 4 | **Never:** what must it never do? | **Never state, compute or confirm an amount** (salary, bonus, contribution, net pay) or anything about a named employee — it escalates to a payroll specialist (L1, human only). | Eval-set: 0 leaks on the money slice |
 | 5 | **Explainability:** explainable to whom? | To the **customer**: every answer cites the help-center article it comes from. To the **support agent**: the escalation note says why it escalated. To the **auditor**: logs of question, retrieved articles, answer, model version. | Monitoring owner |
 | 6 | **The people it cannot serve:** what happens to them? | Questions outside the docs, other languages, pay-figure questions, users who prefer a human: immediate hand-off to the human queue with the conversation attached — never a dead end. Repeated unanswered questions open a documentation-gap ticket. | Support team lead |
@@ -37,7 +37,7 @@
 |---|---|---|
 | Read the ticket and classify | L4 above a confidence threshold, otherwise escalate | A wrong route is cheap if the policy check follows, expensive if a legal or pay ticket is treated as how-to (€300–500). |
 | Retrieve passages | L3 | An irrelevant passage leads to a wrong answer, caught by citations and sampling. |
-| Draft the answer from the passages | L3 on "how do I…" (5 % sampled), person only on everything else | A wrong how-to costs a reopened ticket (~€8). |
+| Draft the answer from the passages | L3 on "how do I…" (10 % sampled in the pilot, 5 % at steady state), person only on everything else | A wrong how-to costs a reopened ticket (~€8). |
 | Policy check (no amount, deadline or refund) | L4 — a rule, it can only block | A missed block costs €300–500 and a contract risk. |
 | Send the answer | L3 on "how do I…", person only otherwise | Same. |
 | Handle escalations | Person only | Money, law and emotion. |
@@ -45,7 +45,7 @@
 - **Human checkpoints ⊘, and their kind:**
   - *abstention* — the router (below 0.70), the guard (guard words, human-only class, language, no passage) and the policy check hand the ticket over by themselves;
   - *approval* — in the prototype every draft is approved by the agent before sending (L2); every escalated ticket is handled by a person;
-  - *sampling* — in production on "how do I…" (L3), 10 % of answered tickets are read by an agent each day.
+  - *sampling* — in production on "how do I…" (L3), 10 % of answered tickets are read by an agent each day during the pilot, then 5 % at steady state once the harm threshold has held for a full adoption step (5 % is the rate priced in the supervision line, `Inputs!G52`: 1.5 FTE).
 - **Override switch ⏻:** the Head of Customer Support (or a delegate) can move the agent to suggest-only or off. In the prototype the switch is real (`prototype/switch.py`, scope: everyone); category and customer scopes are design only. **Tested on 16, 20 and 26 November 2026** (`prototype/test_switch.py`, log `data/switch_log.jsonl`), see Session 7.
 - **Eval data:** `evals/` in this private repository; visible to the five team members and the teachers; synthetic, no personal data. Labels were hashed before the first run (`evals/LABELS_FROZEN.txt`).
 - **What the first eval showed (governance relevance):** two human-only tickets received a draft (E27 no article, E50 how-to + minimum wage). The guard topics list is therefore a governance object: it needs an owner (payroll specialists / Legal) and a review cycle — see `spec.md` v2.

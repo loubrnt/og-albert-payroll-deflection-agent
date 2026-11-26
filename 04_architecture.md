@@ -21,7 +21,7 @@ ticket ──▶ [1 router] ──▶ [2 guard] ──▶ [3 retrieve + draft] �
 |---|---|---|---|---|---|---|
 | 1 | Router (`router.py`) | 2 | routing (classify, then dispatch) | L4 above threshold, else person | abstention (below 0.70) | routing accuracy 70 % |
 | 2 | Guard (`route_rule.py`) | 1 | routing gate | L4 (can only escalate) | abstention | drafts on human-only: 2 (must be 0) |
-| 3 | Retrieve + draft (`retrieve.py`, `draft.py`) | 2 (retrieval) + 3 (draft; template in v0, model optional) | prompt chaining: retrieve → draft | L3 production · L2 prototype | approval (prototype) · sampling 10 % (production) | hit@3 31 %; cited expected section 27 % |
+| 3 | Retrieve + draft (`retrieve.py`, `draft.py`) | 2 (retrieval) + 3 (draft; template in v0, model optional) | prompt chaining: retrieve → draft | L3 production · L2 prototype | approval (prototype) · sampling 10 % (pilot) → 5 % (steady state, the rate priced in `Inputs!G52`) | hit@3 31 %; cited expected section 27 % |
 | 4 | Policy check (`policy.py`) | 1 | gate between draft and send | L4 (can only block) | abstention | policy blocks: 0 |
 
 ## 4. Workflow or agent?

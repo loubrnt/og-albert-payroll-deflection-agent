@@ -94,7 +94,7 @@ In 12 months without the agent, the problem does not stay still: volume grows wi
 | 3. Search the help center | 4.0 | **Pain point:** repetitive | Retrieval of the right passages |
 | 4. Draft the reply | 3.0 | **Pain point:** copy-paste and rewriting | Cited draft |
 | 5. Check the reply | 1.0 | Careful | A rule blocks any amount, deadline or refund |
-| 6. Send and log | 1.5 | Routine | Her work moves to sampling about 5 % of answers and handling escalations with context |
+| 6. Send and log | 1.5 | Routine | Her work moves to sampling answers (10 % in the pilot, 5 % at steady state, as priced in `02_sizing.xlsx` `Inputs!G52`) and handling escalations with context |
 
 ## 9. Stakeholder map
 > **Status: provisional — judgement,** using the Session 1 power / interest grid. Owners match `governance.md`.

@@ -18,7 +18,7 @@ Minutes and error rates are **guesses** until a time-and-motion sample of 30 tic
 | 1 | Read the ticket | agent | 1.0 (guess) | 2 % (guess) | misread → wrong answer, ~€8 | automate (fails none: read-only) | L4 | 0 | share of tickets parsed without error |
 | 2 | Decide whether it is a "how do I…" and may be answered | agent | 0.5 (guess) | 5 % (guess) | a legal-deadline ticket treated as how-to ≈ €300; a pay-figure ticket ≈ €500 | automate **with a hard guard** (fails "low tolerance for error" on legal and pay topics → rule + escalate) | L4 above a threshold, otherwise person | 0 | routing accuracy; recall on human-only tickets |
 | 3 | Search the help center | agent | 4.0 (guess) | 10 % wrong article (guess) | ~€8 (customer asks again) | automate | L3 | 0 | retrieval hit@3 |
-| 4 | Draft the reply | agent | 3.0 (guess) | 4 % (analogy, class sheet) | ~€8 | automate on "how do I…", keep human elsewhere | L3 (5 % sampled) | 0.2 (sampling) | answers two graders would send without editing |
+| 4 | Draft the reply | agent | 3.0 (guess) | 4 % (analogy, class sheet) | ~€8 | automate on "how do I…", keep human elsewhere | L3 (10 % sampled in the pilot, 5 % at steady state) | 0.2 (sampling) | answers two graders would send without editing |
 | 5 | Check the reply holds no amount, deadline or refund | agent | 1.0 (guess) | 3 % (guess) | ~€300–500 + contract risk | automate as a rule that can only block | L4 | 0 | drafts on human-only tickets (must be 0) |
 | 6 | Send and log | agent | 1.5 (guess) | 1 % (guess) | ~€2 | automate | L3 | 0 | 7-day reopen rate |
 | 7 | *(new)* Escalate with context | — | — | — | a customer waiting | keep human; pre-written context saves ~2 min | person only | 9 (instead of 11) | time to first human answer |

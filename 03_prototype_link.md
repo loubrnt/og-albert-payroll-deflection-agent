@@ -15,7 +15,7 @@ Paragraph 2 — what is on the screen (panels, buttons, the one thing it must ne
 Left: a list of 8 fake tickets with a route tag (HOW-DO-I, PAY/LEGAL, BILLING, PRODUCT) and a "waiting since" time. Right: the selected ticket, a draft answer in numbered steps with citations like [KB-101 · Export], a policy line ("Checked: no amount, no deadline, no refund"), and three buttons: Send, Edit, Hand over to a person. A "Talk to a person" button is always visible. The agent must never show a draft containing a pay figure, a contribution rate or a legal deadline: those tickets show "Human only — no draft" and the reason.
 
 Paragraph 3 — the rules (routing, what is "human only", the trust level):
-Only HOW-DO-I tickets get a draft, and every draft carries the caption "AI answer — you approve before sending (L2 in this prototype; L3 with 5 % sampling in production)". PAY/LEGAL and BILLING tickets are human only. Low-confidence tickets go to "Hand over" with the retrieved passages attached. Fake data only.
+Only HOW-DO-I tickets get a draft, and every draft carries the caption "AI answer — you approve before sending (L2 in this prototype; L3 with sampling in production: 10 % in the pilot, 5 % at steady state)". PAY/LEGAL and BILLING tickets are human only. Low-confidence tickets go to "Hand over" with the retrieved passages attached. Fake data only.
 ```
 
 - **Screenshot:** to add in the repo (`prototype/screenshot_v0.1.png`) and link here.

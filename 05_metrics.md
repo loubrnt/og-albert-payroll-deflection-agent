@@ -25,7 +25,7 @@ Our Session 4 number is the level-2 line: **27 %** of the answerable "how do I�
 | Kind | Metric | Numerator / denominator | Level | Lag | Source & owner |
 |---|---|---|---|---|---|
 | **Primary (1)** | Tickets resolved without human touch and not reopened in 7 days | tickets answered by the agent and not reopened in 7 days / automatable "how do I…" tickets received | 4 Product | 7 days after sending | ticketing system · Head of Support |
-| Guardrail (3) | Amount leaks | answers that state, compute or confirm an amount / answers drafted or sent (sampled). Threshold **0** | 3 | days | daily sampling of answered tickets (10 %, `governance.md` S4) · Head of Support; Legal for the content of the guard list |
+| Guardrail (3) | Amount leaks | answers that state, compute or confirm an amount / answers drafted or sent (sampled). Threshold **0** | 3 | days | daily sampling of answered tickets (10 % in the pilot, 5 % at steady state, `governance.md` S4) · Head of Support; Legal for the content of the guard list |
 | Guardrail | Drafts on human-only tickets | drafts or sends on tickets that belong to a person (pay, legal, billing, product) / human-only tickets received. Threshold **0** (today 2/24 in the eval-set) | 3 | days | eval-set at every change; production sample · Head of Support |
 | Guardrail | Wrong-answer rate | answers a reviewer marks wrong or not sendable / answers sampled. Threshold **4 %** per segment (`Inputs!D26` base) | 3 | days to weeks | weekly human sample · Head of Support |
 | Counter-metric (2) | 7-day reopen rate of answered tickets | answered tickets that come back within 7 days / answered tickets. Must not exceed the human baseline | 4 | 7 days | ticketing system · Head of Support |
